@@ -1,0 +1,130 @@
+$black: #0e1019;
+$gray: #a6accd;
+
+$red: #f07177;
+$green: #c3e88e;
+$yellow: #fbca6b;
+$blue: #89dcff;
+$magenta: #c791e9;
+$cyan: #80cbc4;
+
+$font: "hack";
+
+$listColors: (
+    1: $yellow,
+    2: $green,
+    3: $cyan,
+    4: $blue,
+    5: $magenta,
+    0: $red,
+);
+
+em {
+    color: $red
+}
+
+strong {
+    color: $blue
+}
+
+body {
+    background-color: $black;
+}
+
+* {
+    color: $gray;
+}
+
+h1.title {
+    margin-bottom: 3rem;
+}
+
+article {
+    align-items: center;
+    justify-content: center;
+    font-size: 0.25rem;
+    display:flex;
+    flex-direction: column;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+blockquote {
+    margin: inherit;
+    padding-left: 2rem;
+    margin-top: 1rem;
+    border-left: solid 3px $green;
+}
+
+h1 {
+    font-weight: 900;
+    color: white;
+}
+
+* {
+    color: $gray;
+    font-family: $font;
+    font-size: 1.5rem;
+}
+
+h2 {
+    prefix: "$";
+    color: $blue
+}
+
+h3 { 
+    color: $green 
+}
+
+h4 {
+    color:$green
+}
+
+pre {
+    font-size: 0.25rem;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+    background-color: $black !important;
+    border: 2px $gray solid;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+}
+
+pre>code{
+    font-size: 0.45rem
+}
+
+article>* {
+    width:80%;
+}
+
+article>pre {
+    width:100%
+}
+
+html {
+    display: flex;
+    flex-direction: column;
+    background-color: $black;
+    align-items: left;
+    padding-left: 2rem;
+}
+
+ul {
+    list-style-type: "> ";
+}
+
+code { 
+    color: $magenta;
+}
+
+@each $number, $color in $listColors {
+    li:nth-child(6n+#{$number}) > a {
+        color: $color;
+    }
+    li:nth-child(6n+#{$number}) > a:hover {
+        color: $black;
+        text-decoration: none;
+        background-color: $color;
+    }
+}
