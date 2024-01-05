@@ -98,8 +98,40 @@ fn num_fields_derive(input: TokenStream) -> TokenStream {
         }
     }.into()
 }
+```
 
 ## Testing
 
-tbd...
+In order to test our macro, from the root of the project write `cargo new example`. 
+
+Inside of example, under dependencies, write `num_fields = {path=".."}`. 
+
+In `src/main.rs`, write:
+
+```rust
+use num_fields::NumFields;
+
+#[derive(NumFields)]
+enum TestEnum {
+    Good,
+    Bad,
+    Ugly,
+}
+
+
+#[derive(NumFields)]
+union TestUnion {
+    id: u8
+}
+
+#[derive(NumFields)]
+struct TestStruct([u16;8]);
+
+fn main() {
+    println!("Enum Fields: {}", TestEnum::NUM_FIELDS);
+    println!("Union Fields: {}", TestUnion::NUM_FIELDS);
+    println!("Struct Fields: {}", TestStruct::NUM_FIELDS);
+}
 ```
+
+If you run the example, the results should be as expected.
