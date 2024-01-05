@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/index.css">
+        <meta charset="utf-8">
+        <title>Ben Raz Blog</title>
+    </head>
+    <body>
+        <section class="content">
+            <div class="container">
+                
+<h1 class="title">
+    A Practical Taste of Procedural Macros in Rust <span class="subtle">2023-12-28</span>
+</h1>
+<article>
+<h2 id="what-are-procedural-macros">What are procedural macros?</h2>
+<p>Procedural macros in rust are macros that take code as an input. An example of a procedural macro is the <code>PartialEq</code> macro which allows equality checks.</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span>#[</span><span style="color:#bf616a;">derive</span><span>(PartialEq)]
+</span><span style="color:#b48ead;">struct </span><span>Person {
+</span><span>    </span><span style="color:#bf616a;">id</span><span>: </span><span style="color:#b48ead;">u8</span><span>,
+</span><span>    </span><span style="color:#bf616a;">name</span><span>: String,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> john = Person { id: </span><span style="color:#d08770;">0</span><span>, name: &quot;</span><span style="color:#a3be8c;">John</span><span>&quot;.</span><span style="color:#96b5b4;">into</span><span>() };
+</span><span>    </span><span style="color:#b48ead;">let</span><span> sarah = Person { id: </span><span style="color:#d08770;">1</span><span>, name: &quot;</span><span style="color:#a3be8c;">Sarah</span><span>&quot;.</span><span style="color:#96b5b4;">into</span><span>() };
+</span><span>    assert_neq!(john, sarah);
+</span><span>}
+</span></code></pre>
+<p>In this post, I will explain how to make a simple procedural macro that counts the number of fields/variants in a struct, enum, or union. </p>
+<h2 id="project-setup">Project setup</h2>
+<p>The first step is to create our project with <code>cargo new --lib num_fields</code>. Due to complicated constraints going deep into the language, we need to mark this crate (<code>num_fields</code>), as a crate with a procedural macro. To do this we write the following in <code>Cargo.toml</code>:</p>
+<pre data-lang="toml" style="background-color:#2b303b;color:#c0c5ce;" class="language-toml "><code class="language-toml" data-lang="toml"><span>[lib]
+</span><span style="color:#bf616a;">proc_macro </span><span>= </span><span style="color:#d08770;">true
+</span></code></pre>
+<blockquote>
+<p><strong>Note</strong>: In most crates, the proc macro will be in a sub crate</p>
+</blockquote>
+<p>Next, install <code>syn</code> and <code>quote</code> with <code>cargo add syn quote</code>. </p>
+<h2 id="our-code">Our Code</h2>
+<p>In <code>src/lib.rs</code>, delete everything and write:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span>#[</span><span style="color:#bf616a;">proc_macro_derive</span><span>(NumFields)]
+</span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">num_fields_derive</span><span>(</span><span style="color:#bf616a;">input</span><span>: TokenStream) -&gt; TokenStream { ... }
+</span></code></pre>
+<p>This creates a proc macro for the <code>NumFields</code> trait. The first thing we need to do is to parse the input into something easier to work with, in this case, <code>syn</code>'s <code>DeriveInput</code> struct:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">let</span><span> input = parse_macro_input!(input as DeriveInput);
+</span></code></pre>
+<p>Next, we need to get the name of the struct/enum/union we are working with:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">let</span><span> mame = input.ident;
+</span></code></pre>
+<p>Next, we match the type of the data we are working on: </p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">let</span><span> num_fields = </span><span style="color:#b48ead;">match</span><span> input.data {
+</span><span>        Data::Enum(enum_data) =&gt; enum_data.variants.</span><span style="color:#96b5b4;">len</span><span>(),
+</span><span>        Data::Union(union_data) =&gt; union_data.fields.named.</span><span style="color:#96b5b4;">len</span><span>(),
+</span><span>        Data::Struct(struct_data) =&gt; struct_data.fields.</span><span style="color:#96b5b4;">len</span><span>(),
+</span><span>};
+</span></code></pre>
+<p>Finally, we put together the output with the <code>quote!</code> macro:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span>quote! {
+</span><span>    </span><span style="color:#b48ead;">impl </span><span>#name {
+</span><span>        </span><span style="color:#b48ead;">const </span><span style="color:#d08770;">NUM_FIELDS</span><span>: </span><span style="color:#b48ead;">usize </span><span>= #num_fields;
+</span><span>    }
+</span><span>}.</span><span style="color:#96b5b4;">into</span><span>()
+</span></code></pre>
+<p>All in all, the function looks like this:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span>#[</span><span style="color:#bf616a;">proc_macro_derive</span><span>(NumFields)]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">num_fields_derive</span><span>(</span><span style="color:#bf616a;">input</span><span>: TokenStream) -&gt; TokenStream {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> input  = parse_macro_input!(input as DeriveInput);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> name = input.ident;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> num_fields = </span><span style="color:#b48ead;">match</span><span> input.data {
+</span><span>        Data::Enum(enum_data) =&gt; enum_data.variants.</span><span style="color:#96b5b4;">len</span><span>(),
+</span><span>        Data::Union(union_data) =&gt; union_data.fields.named.</span><span style="color:#96b5b4;">len</span><span>(),
+</span><span>        Data::Struct(struct_data) =&gt; struct_data.fields.</span><span style="color:#96b5b4;">len</span><span>(),
+</span><span>    }
+</span><span>
+</span><span>    quote! {
+</span><span>        </span><span style="color:#b48ead;">impl </span><span>#name {
+</span><span>            </span><span style="color:#b48ead;">const </span><span style="color:#d08770;">NUM_FIELDS</span><span>: </span><span style="color:#b48ead;">usize </span><span>= #num_fields;
+</span><span>        }
+</span><span>    }.</span><span style="color:#96b5b4;">into</span><span>()
+</span><span>}
+</span></code></pre>
+<h2 id="testing">Testing</h2>
+<p>In order to test our macro, from the root of the project write <code>cargo new example</code>. </p>
+<p>Inside of example, under dependencies, write <code>num_fields = {path=&quot;..&quot;}</code>. </p>
+<p>In <code>src/main.rs</code>, write:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">use </span><span>num_fields::NumFields;
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(NumFields)]
+</span><span style="color:#b48ead;">enum </span><span>TestEnum {
+</span><span>    Good,
+</span><span>    Bad,
+</span><span>    Ugly,
+</span><span>}
+</span><span>
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(NumFields)]
+</span><span>union TestUnion {
+</span><span>    id: </span><span style="color:#b48ead;">u8
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(NumFields)]
+</span><span style="color:#b48ead;">struct </span><span>TestStruct([</span><span style="color:#b48ead;">u16</span><span>;8]);
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    println!(&quot;</span><span style="color:#a3be8c;">Enum Fields: </span><span style="color:#d08770;">{}</span><span>&quot;, TestEnum::</span><span style="color:#d08770;">NUM_FIELDS</span><span>);
+</span><span>    println!(&quot;</span><span style="color:#a3be8c;">Union Fields: </span><span style="color:#d08770;">{}</span><span>&quot;, TestUnion::</span><span style="color:#d08770;">NUM_FIELDS</span><span>);
+</span><span>    println!(&quot;</span><span style="color:#a3be8c;">Struct Fields: </span><span style="color:#d08770;">{}</span><span>&quot;, TestStruct::</span><span style="color:#d08770;">NUM_FIELDS</span><span>);
+</span><span>}
+</span></code></pre>
+<p>If you run the example, the results should be as expected.</p>
+
+</article>
+
+                <a href="..">Back</a>
+            </div>
+        </section>
+    </body>
+</html>
