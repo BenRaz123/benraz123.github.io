@@ -139,6 +139,28 @@ href="https://github.com/benraz123/site">this one</a> for the source and
 for the build. The script is <em>somewhat</em> usable for other website
 but there are still a bunch of hard-coded values and it’s probably super
 un-idiomatic.</p>
+	<hr>
+        <details class="comments"><summary><h2>Comments (Disqus)</h2></summary>
+        <div id="disqus_thread"></div>
+    <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://benrazdev.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </details>
 </main>
 <footer>
     All content is licensed under the MIT license unless otherwise posted. (Ben Raz <span id="year-update">2024</span>)
@@ -324,4 +346,27 @@ span.st { color: var(--green) }
 span.ss { color: var(--green) }
 span.sc { color: var(--green); font-weight: bold }
 span.ch { color: var(--magenta) }
+
+/*
+ * Styles for comments 
+ */
+
+summary::marker {
+    display: inline;
+}
+
+summary h2 {
+    display: inline;
+    font-size: 1.5em; 
+    margin: 0;
+    margin-left: 0.5rem;
+}
+
+summary, summary * {
+    cursor: pointer
+}
+
+div#disqus_thread {
+    margin-top: 1rem;
+}
 </style>
