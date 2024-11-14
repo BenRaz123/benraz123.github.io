@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Ben Raz Blog</title><link>https://benraz.dev/blog</link><description>My beautiful blog, delivered to you with next-generation RSS technology</description><pubDate>Fri, 01 Nov 2024 11:02:17 +0000</pubDate><item><title>The Process of Building This Website</title><link>https://benraz.dev/blog/website_process.html</link><description><p>Welcome again to my brand-new website! I hope it doesn’t look too
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Ben Raz Blog</title><link>https://benraz.dev/blog</link><description>My beautiful blog, delivered to you with next-generation RSS technology</description><pubDate>Thu, 14 Nov 2024 11:35:29 +0000</pubDate><item><title>What is Trump's Policy on NATO & Ukraine?</title><link>https://benraz.dev/blog/trump_ukraine_nato.htmlwip</link><description><p>DISCLAIMER: This will be a discussion of geopolitics. I will not be
+getting political.</p>
+<p>A spectre is haunting Europe. Specifically the spectre of a second
+Trump administration.</p>
+<p>The 2024 election has been one that observers in Europe have not been
+looking forward to. The reason for this anxiety is the uncertainty that
+existed coming into the election. Unlike the 2020 election in which most
+people expected Biden to defeat Trump, the 2024 election has been far
+more tumultuous and uncertain. Going into election day, most polls left
+the race up to a coin flip. For the European security community, the
+stakes couldn’t be higher. Kamala Harris essentially ran on a
+continuation of Biden’s strong support for NATO and Ukraine. Trump, on
+the other hand ran under an “America First” platform based on weaker
+support of Ukraine and NATO.</p>
+</description><pubDate>Mon, 11 Nov 2024 00:00:00 +0000</pubdate></item> <item><title>The Process of Building This Website</title><link>https://benraz.dev/blog/website_process.html</link><description><p>Welcome again to my brand-new website! I hope it doesn’t look too
 terrible. I wanted to, in an act of supreme originality, dedicate my
 first blog post to documenting the process used to conjure up this
 website, READMEs be damned.</p>
@@ -118,7 +132,10 @@ of them. After a little <code>CSS</code>, it’s all done.</p>
 <h2 id="putting-it-all-done">Putting it all done</h2>
 <p>To summarize, I basically created a crappy SSG with
 <code>python</code> and <code>pandoc</code>. If anyone for any reason
-wants to see it, it will be on my GitHub at one point. The script is
-<em>somewhat</em> usable for other website but there are still a bunch
-of hard-coded values and it’s probably super un-idiomatic.</p>
+wants to see it, the site is contained in two repositories, <a
+href="https://github.com/benraz123/site">this one</a> for the source and
+<a href="https://github.com/benraz123/benraz123.github.io">this one</a>
+for the build. The script is <em>somewhat</em> usable for other website
+but there are still a bunch of hard-coded values and it’s probably super
+un-idiomatic.</p>
 </description><pubDate>Wed, 30 Oct 2024 17:00:00 +0000</pubdate></item></channel></rss>
