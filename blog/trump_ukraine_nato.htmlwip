@@ -1,26 +1,64 @@
-<title>Blog - Ben Raz</title>
+<title>What is Trump’s Policy on NATO &amp;
+Ukraine? - Ben Raz Blog</title>
 <nav>
     <a id="self-link" href="/">benraz.dev</a>
     <div class="links-wrapper">
         <a href="/about.html">about</a><span class="delim"> | </span><a href="/blog">blog</a><span class="delim"> | </span><a href="https://github.com/benraz123">github</a><span class="delim"> | </span><a href="https://crates.io/users/BenRaz123?sort=recent-updates">crates.io</a>
     </div>
 </nav>
-<main><h1 id="blog-rss">Blog <a href="/feed.rss">(RSS)</a></h1>
-<ul>
-<li><a href='/blog/trump_ukraine_nato.html'>“What is Trump’s Policy on
-NATO &amp; Ukraine?”</a> <span
-class="timestamp"><code>(November 2024)</code></span></li>
-<li><a href='/blog/website_process.html'>“The Process of Building This
-Website”</a> <span
-class="timestamp"><code>(October 2024)</code></span></li>
-</ul></main>
+<main>
+		<div class="nav-links-container"><a href="/">&lt;&lt; home</a><a href="/blog">&lt; blog</a></div>
+		<h1>What is Trump’s Policy on NATO &amp; Ukraine?</h1>
+		<span class="timestamp"><code>[Published 2024-11-11
+00:00:00-05]</code></span><br>
+		<span class="timestamp"><code>[Updated 2024-11-11
+00:00:00-05]</code></span>
+		<hr>
+		<p>DISCLAIMER: This will be a discussion of geopolitics. I will not be
+getting political.</p>
+<p>A spectre is haunting Europe. Specifically the spectre of a second
+Trump administration.</p>
+<p>The 2024 election has been one that observers in Europe have not been
+looking forward to. The reason for this anxiety is the uncertainty that
+existed coming into the election. Unlike the 2020 election in which most
+people expected Biden to defeat Trump, the 2024 election has been far
+more tumultuous and uncertain. Going into election day, most polls left
+the race up to a coin flip. For the European security community, the
+stakes couldn’t be higher. Kamala Harris essentially ran on a
+continuation of Biden’s strong support for NATO and Ukraine. Trump, on
+the other hand ran under an “America First” platform based on weaker
+support of Ukraine and NATO.</p>
+	<hr>
+        <details class="comments"><summary><h2>Comments (Disqus)</h2></summary>
+        <div id="disqus_thread"></div>
+    <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://benrazdev.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </details>
+</main>
 <footer>
     All content is licensed under the MIT license unless otherwise posted. (Ben Raz <span id="year-update">2024</span>)
     <script>
         document.querySelector("#year-update").innerHTML = new Date().getFullYear()
     </script>
 </footer>
-<style>/*
+<style>
+/*
  * General Settings
  */
 
@@ -42,13 +80,6 @@ class="timestamp"><code>(October 2024)</code></span></li>
     --code-block-bg: #0002;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --fg: white;
-        --accent: #7744aa;
-        --bg: #161616;
-    }
-}
 @media (prefers-color-scheme: light) {
     :root {
         --fg: black;
@@ -57,6 +88,13 @@ class="timestamp"><code>(October 2024)</code></span></li>
     }
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fg: white;
+        --accent: #7744aa;
+        --bg: #161616;
+    }
+}
 
 p { line-height: 1.25rem;}
 
@@ -72,20 +110,6 @@ h1, h2 {
 
 a {
     color: var(--accent)
-}
-
-h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-}
-
-/*
- * Text Selection
- */
-
-*::selection {
-    background-color: var(--accent);
-    color: var(--bg);
 }
 
 /*
@@ -251,91 +275,22 @@ span.ch { color: var(--magenta) }
  * Styles for comments 
  */
 
-
-summary, summary * {
-    cursor: pointer;
-}
 summary::marker {
     display: inline;
 }
 
 summary h2 {
     display: inline;
-    font-size: 1.5em;
+    font-size: 1.5em; 
     margin: 0;
     margin-left: 0.5rem;
+}
+
+summary, summary * {
+    cursor: pointer
 }
 
 div#disqus_thread {
     margin-top: 1rem;
 }
-
-/*
- * Notes & Other Admonitions
- */
-div[class]:has(p) {
-    /*
-     * Kind of Like a Class
-     */
-
-    /*
-     ** Variables
-     */
-    --bg-color: lightgray;
-    --before-fg-color: white;
-    --before-bg-color: gray;
-    
-
-    margin-top: 1rem;
-    background-color: var(--bg-color);
-    padding: 0.2rem 0.5rem;
-    border-radius: 1rem ;
-    
-    & p {
-        color: black;
-        background-color: var(--bg-color);
-    }
-
-    & >* {
-        padding: 0.2rem 0.5rem;
-    }
-
-    & > div.sourceCode {
-        padding: 0;
-        margin: 0;
-        & > pre {
-            margin: 0;
-        }
-    } 
-
-    &:hover::before {
-        margin-left: -2em;
-    }
-
-    &::before {
-        color: var(--before-fg-color);
-        background-color: var(--before-bg-color);
-        padding: 0.5rem;
-        text-transform: capitalize;
-        content: attr(class);
-        top -0.3em;
-        margin-left: -1em;
-        font-weight: bold;
-        transition: margin-left 0.3s;
-    }
-    & p::selection  {
-        background-color: var(--before-bg-color);
-        color: var(--before-fg-color)
-    }
-}
-
-div.warning:has(p) { 
-    --bg-color: #faa; 
-    --before-bg-color: red;
-}
-
-div.note:has(p) {
-    --bg-color: lightyellow;
-	--before-bg-color: yellow;
-	--before-fg-color: black
-}</style>
+</style>
