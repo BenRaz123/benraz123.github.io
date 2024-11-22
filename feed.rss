@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Ben Raz Blog</title><link>https://benraz.dev/blog</link><description>My beautiful blog, delivered to you with next-generation RSS technology</description><pubDate>Fri, 22 Nov 2024 09:20:07 +0000</pubDate><item><title>The Process of Building This Website</title><link>https://benraz.dev/blog/website_process.html</link><description><p>Welcome again to my brand-new website! I hope it doesn’t look too
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Ben Raz Blog</title><link>https://benraz.dev/blog</link><description>My beautiful blog, delivered to you with next-generation RSS technology</description><pubDate>Fri, 22 Nov 2024 09:42:13 +0000</pubDate><item><title>The Process of Building This Website</title><link>https://benraz.dev/blog/website_process.html</link><description><p>Welcome again to my brand-new website! I hope it doesn’t look too
 terrible. I wanted to, in an act of supreme originality, dedicate my
 first blog post to documenting the process used to conjure up this
 website, READMEs be damned.</p>
@@ -115,13 +115,19 @@ wrote the boilerplate necessary for sorting a
 <code>__ge__()</code>, and <code>__le__()</code>).</p>
 <p>I wrote a function next for getting all blog posts and building all
 of them. After a little <code>CSS</code>, it’s all done.</p>
-<h2 id="putting-it-all-done">Putting it all done</h2>
+<h2 id="putting-it-all-together">Putting it all Together</h2>
+<div class="warning">
+<p>WARNING:</p>
+<p>While effort was made to make the script generic, it still contains a
+lot of hardcoded values. Additionally, it is not well-written or tested
+so do not expect for it to work. If you don’t want to get down and dirty
+in the details, don’t use it. There are plenty of SSGs around and I
+don’t want to rob you of the fun of writing your own.</p>
+</div>
 <p>To summarize, I basically created a crappy SSG with
 <code>python</code> and <code>pandoc</code>. If anyone for any reason
 wants to see it, the site is contained in two repositories, <a
 href="https://github.com/benraz123/site">this one</a> for the source and
 <a href="https://github.com/benraz123/benraz123.github.io">this one</a>
-for the build. The script is <em>somewhat</em> usable for other website
-but there are still a bunch of hard-coded values and it’s probably super
-un-idiomatic.</p>
+for the build.</p>
 </description><pubDate>Wed, 30 Oct 2024 17:00:00 +0000</pubdate></item></channel></rss>
