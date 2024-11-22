@@ -16,7 +16,15 @@
 		<span class="timestamp"><code>[Updated 2024-11-1 11:25:00
 -04]</code></span>
 		<hr>
-		<p>Welcome again to my brand-new website! I hope it doesn’t look too
+		<div class="info">
+<p>INFO:</p>
+<p>The source for this website can be found on my Github at <a
+href="https://github.com/benraz123/site">this link</a>. This site is
+hosted at <a
+href="https://github.com/benraz123/benraz123.github.io">this
+link</a>.</p>
+</div>
+<p>Welcome again to my brand-new website! I hope it doesn’t look too
 terrible. I wanted to, in an act of supreme originality, dedicate my
 first blog post to documenting the process used to conjure up this
 website, READMEs be damned.</p>
@@ -217,7 +225,7 @@ for the build.</p>
 }
 
 
-p { line-height: 1.25rem; }
+p { line-height: 1.25rem;}
 
 * {
     font-family: var(--sans);
@@ -454,13 +462,13 @@ div[class]:has(p) {
     --before-fg-color: white;
     --before-bg-color: gray;
     
-
+    font-style: italic;
     margin-top: 1rem;
     background-color: var(--bg-color);
     padding: 0.2rem 0.5rem;
     border-radius: 1rem ;
     
-    & p {
+    & p , a {
         color: black;
         background-color: var(--bg-color);
     }
@@ -482,6 +490,7 @@ div[class]:has(p) {
     }
 
     &::before {
+        font-style: normal;
         color: var(--before-fg-color);
         background-color: var(--before-bg-color);
         padding: 0.5rem;
@@ -491,7 +500,7 @@ div[class]:has(p) {
         font-weight: bold;
         transition: margin-left 0.3s;
     }
-    & p::selection  {
+    & p::selection, a::selection  {
         background-color: var(--before-bg-color);
         color: var(--before-fg-color);
     }

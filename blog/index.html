@@ -57,7 +57,7 @@ class="timestamp"><code>(October 2024)</code></span></li>
 }
 
 
-p { line-height: 1.25rem; }
+p { line-height: 1.25rem;}
 
 * {
     font-family: var(--sans);
@@ -294,13 +294,13 @@ div[class]:has(p) {
     --before-fg-color: white;
     --before-bg-color: gray;
     
-
+    font-style: italic;
     margin-top: 1rem;
     background-color: var(--bg-color);
     padding: 0.2rem 0.5rem;
     border-radius: 1rem ;
     
-    & p {
+    & p , a {
         color: black;
         background-color: var(--bg-color);
     }
@@ -322,6 +322,7 @@ div[class]:has(p) {
     }
 
     &::before {
+        font-style: normal;
         color: var(--before-fg-color);
         background-color: var(--before-bg-color);
         padding: 0.5rem;
@@ -331,7 +332,7 @@ div[class]:has(p) {
         font-weight: bold;
         transition: margin-left 0.3s;
     }
-    & p::selection  {
+    & p::selection, a::selection  {
         background-color: var(--before-bg-color);
         color: var(--before-fg-color);
     }
