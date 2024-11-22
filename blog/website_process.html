@@ -1,12 +1,15 @@
 <title>The Process of Building This Website - Ben Raz Blog</title>
+<body >
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0"></script>
 <nav>
     <a id="self-link" href="/">benraz.dev</a>
     <div class="links-wrapper">
         <a href="/about.html">about</a><span class="delim"> | </span><a href="/blog">blog</a><span class="delim"> | </span><a href="https://github.com/benraz123">github</a><span class="delim"> | </span><a href="https://crates.io/users/BenRaz123?sort=recent-updates">crates.io</a>
     </div>
 </nav>
-<main>
-		<div class="nav-links-container"><a href="/">&lt;&lt; home</a><a href="/blog">&lt; blog</a></div>
+<main >
+	<div class="nav-links-container"><a href="/">&lt;&lt; home</a><noscript class="hide"> </noscript><a href="/blog">&lt; blog</a></div>
 		<h1>The Process of Building This Website</h1>
 		<span class="timestamp"><code>[Published 2024-10-30 17:00:00
 -04]</code></span><br>
@@ -140,8 +143,8 @@ for the build. The script is <em>somewhat</em> usable for other website
 but there are still a bunch of hard-coded values and it’s probably super
 un-idiomatic.</p>
 	<hr>
-        <details class="comments"><summary><h2>Comments (Disqus)</h2></summary>
-        <div id="disqus_thread"></div>
+    <details class="comments"><summary><h2>Comments (Disqus)</h2></summary><div id="disqus_thread"></div></details>
+	<details class="comments"><summary><h2>Comments (Facebook)</h2></summary><div class="fb-comments" data-href="https://benraz.dev/blog/website_process.html" data-width="" data-numposts="10"></div></details>
     <script>
     /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -168,6 +171,7 @@ un-idiomatic.</p>
         document.querySelector("#year-update").innerHTML = new Date().getFullYear()
     </script>
 </footer>
+</body>
 <style>
 /*
  * General Settings
@@ -334,6 +338,11 @@ li::marker {
     gap: 1rem;
 }
 
+/* This element is only supposed to show when CSS and JS are disabled */
+noscript.hide {
+    display: none;
+}
+
 /*
  * Blog Post hr
  */
@@ -401,6 +410,10 @@ span.ch { color: var(--magenta) }
  */
 
 
+details {
+    margin-top : 1rem;
+}
+
 summary, summary * {
     cursor: pointer;
 }
@@ -467,25 +480,53 @@ div[class]:has(p) {
         padding: 0.5rem;
         text-transform: capitalize;
         content: attr(class);
-        top -0.3em;
         margin-left: -1em;
         font-weight: bold;
         transition: margin-left 0.3s;
     }
     & p::selection  {
         background-color: var(--before-bg-color);
-        color: var(--before-fg-color)
+        color: var(--before-fg-color);
+    }
+    & > p:first-child{
+	display: none;
     }
 }
 
-div.warning:has(p) { 
+div.warning:has(p) {   
     --bg-color: #faa; 
-    --before-bg-color: red;
+    --before-bg-color: red; 
 }
 
-div.note:has(p) {
+div.note:has(p), div.disclaimer:has(p) {
     --bg-color: lightyellow;
-	--before-bg-color: yellow;
-	--before-fg-color: black
+    --before-bg-color: yellow;
+    --before-fg-color: black
+}
+
+/*
+ * WIP Banner
+ */
+
+[wip]::before {
+    content: "WORK IN PROGRESS";
+    background: repeating-linear-gradient(-55deg,
+        #000000, #000000 15px,
+        #e2d529 15px, #e2d529 30px);
+    display: block;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+    padding: 0.5em 0;
+    text-align: center;
+    border-radius: 0rem 0rem 1rem 1rem;
+    position: sticky;
+    text-shadow:
+        1px 1px 2px black,
+        1px -1px 2px black,
+        -1px 1px 2px black,
+        -1px -1px 2px black;   
+    top: 2;
 }
 </style>
