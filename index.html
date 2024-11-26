@@ -6,23 +6,26 @@
         <a href="/about.html">about</a><span class="delim"> | </span><a href="/blog">blog</a><span class="delim"> | </span><a href="https://github.com/benraz123">github</a><span class="delim"> | </span><a href="https://crates.io/users/BenRaz123?sort=recent-updates">crates.io</a>
     </div>
 </nav>
+<div class="main-container">
 <main><h1 id="welcome">Welcome!</h1>
 <p>Welcome to my website. For more info on me, go to <a
 href="/about.html">about</a>. If you want to read my blog, please go
 over to <a href="/blog">blog</a>. To see my projects, go to my <a
 href="https://github.com/benraz123">GitHub</a> or <a
 href="https://crates.io/users/BenRaz123">crates.io</a>.</p>
-<p>Have a good day!</p></main>
-<footer>
+<p>Have a good day!</p><footer>
     All content is licensed under the MIT license unless otherwise posted. (Ben Raz <span id="year-update">2024</span>)
     <script>
         document.querySelector("#year-update").innerHTML = new Date().getFullYear()
     </script>
-</footer>
-</body>
+</footer></main>
+</body></div>
+</div>
 <style>/*
  * General Settings
  */
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 @font-face {
     font-family: "cantvf";
@@ -31,7 +34,8 @@ href="https://crates.io/users/BenRaz123">crates.io</a>.</p>
 
 :root {
     --sans: "cantvf", "Verdana", "Tahoma", sans-serif;
-    --mono: "DejaVu Sans Mono", monospace;
+    --title: var(sans);
+    --mono: "Ubuntu Mono", "DejaVu Sans Mono", monospace;
     --red: darkred;
     --green: darkgreen;
     --blue: blue;
@@ -45,20 +49,35 @@ href="https://crates.io/users/BenRaz123">crates.io</a>.</p>
 @media (prefers-color-scheme: dark) {
     :root {
         --fg: white;
-        --accent: #7744aa;
         --bg: #161616;
+        --accent: #7744aa;
+        --note-bg-color: #221;
+        --info-bg-color: #252525;
+        --warning-bg-color: #251010;
     }
 }
+
 @media (prefers-color-scheme: light) {
     :root {
         --fg: black;
         --bg: white;
         --accent: rebeccapurple;
+        --note-bg-color: #ffc;
+        --info-bg-color: lightgray;
+        --warning-bg-color: #fcc;
     }
 }
 
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--title)
+}
 
-p { line-height: 1.25rem;}
+p {
+    line-height: 1.25rem;
+}
 
 * {
     font-family: var(--sans);
@@ -66,17 +85,18 @@ p { line-height: 1.25rem;}
     background-color: var(--bg);
 }
 
-h1, h2 {
-    font-weight: 900;
+h1,
+h2 {
+    font-weight: 800;
 }
 
 a {
-    color: var(--accent)
+    color: var(--accent);
 }
 
 h1 {
     font-size: 2.5rem;
-    font-weight: 800;
+    font-variation-settings: 'wght' 900;
 }
 
 /*
@@ -96,16 +116,57 @@ body {
     margin: 0
 }
 
-main > *, footer {
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+@media screen and (min-width: 800px) {
+    main {
+        width: 70rem;
+    }
+}
+
+main>*,
+footer {
     margin-left: 20%;
     margin-right: 20%;
 }
+
+@media screen and (max-width: 500px) {
+    main {
+        width: none;
+    }
+
+    main>*,
+    footer {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+}
+
+@media screen and (min-width: 501px) {
+
+    pre:not([class]),
+    main div.sourcecode {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+}
+
+/*nav,
+nav * {
+    max-width: none
+}*/
 
 /* 
  * Footer Color & Font Size
  */
 
-footer, footer * {
+footer,
+footer * {
     color: gray
 }
 
@@ -141,7 +202,7 @@ nav a {
     color: var(--fg);
 }
 
-#self-link { 
+#self-link {
     font-weight: bold
 }
 
@@ -154,27 +215,38 @@ nav a {
  * Timestamp Styles
  */
 
-span.timestamp * {
-    padding: 0;
-    background-color: #0000;
-    color:gray;
-    font-family: var(--mono)
+span.timestamp {
+    margin-right: 0;
+
+    &,
+    * {
+        padding: 0;
+        background-color: #0000;
+        color: gray;
+        font-family: var(--mono)
+    }
 }
 
 /*
  * Blog Posts List
  */
 
-li:has(span.ts, a) {
-    list-style-type: "- " 
-}
+ul {
+    &>li {
+        &:has(span.ts, a) {
+            color: var(--fg);
+            list-style-type: "- ";
+        }
 
-li:has(span.ts, a:hover) {
-    list-style-type: "> "
-}
+        &:has(span.ts, a:hover) {
+            color: var(--accent);
+            list-style-type: "> ";
+        }
 
-li::marker { 
-    font-family: var(--mono)
+        &::marker {
+            font-family: var(--mono);
+        }
+    }
 }
 
 /*
@@ -195,7 +267,7 @@ noscript.hide {
  * Blog Post hr
  */
 
-main > hr {
+main>hr {
     border: 0.5px solid #fff2;
     margin-top: 1rem;
 }
@@ -211,14 +283,8 @@ code {
     border-radius: 5px;
 }
 
-div.sourceCode {
-    margin: 0
-}
-
 pre {
     background-color: var(--code-block-bg);
-    margin-left: 15%;
-    margin-right: 15%;
     padding: 1rem;
     white-space: pre-wrap;
     border-radius: 0.5rem;
@@ -230,28 +296,75 @@ pre code {
 
 pre * {
     margin: 0;
-    font-family: var(--mono); 
+    font-family: var(--mono);
     background-color: #0000;
 }
 
-pre > code > span:first-child {
+pre>code>span:first-child {
     margin-left: 0em
 }
 
-span.kw { color: var(--red); font-weight: bold }
-span.at { color: var(--magenta); font-weight: bold } 
-span.dt { color: var(--blue) }
-span.fu { color: var(--yellow) }
-span.bu { color: var(--blue) }
-span.op { color: var(--red) }
-span.cf { color: var(--pink); font-weight: bold }
-span.co { color: var(--blue) }
-span.an { color: var(--yellow); font-weight: bold }
-span.va { color: var(--fg); font-weight: bold }
-span.st { color: var(--green) }
-span.ss { color: var(--green) }
-span.sc { color: var(--green); font-weight: bold }
-span.ch { color: var(--magenta) }
+span.kw {
+    color: var(--red);
+    font-weight: bold
+}
+
+span.at {
+    color: var(--magenta);
+    font-weight: bold
+}
+
+span.dt {
+    color: var(--blue)
+}
+
+span.fu {
+    color: var(--yellow)
+}
+
+span.bu {
+    color: var(--blue)
+}
+
+span.op {
+    color: var(--red)
+}
+
+span.cf {
+    color: var(--pink);
+    font-weight: bold
+}
+
+span.co {
+    color: var(--blue)
+}
+
+span.an {
+    color: var(--yellow);
+    font-weight: bold
+}
+
+span.va {
+    color: var(--fg);
+    font-weight: bold
+}
+
+span.st {
+    color: var(--green)
+}
+
+span.ss {
+    color: var(--green)
+}
+
+span.sc {
+    color: var(--green);
+    font-weight: bold
+}
+
+span.ch {
+    color: var(--magenta)
+}
 
 /*
  * Styles for comments 
@@ -259,21 +372,25 @@ span.ch { color: var(--magenta) }
 
 
 details {
-    margin-top : 1rem;
+    margin-top: 1rem;
 }
 
-summary, summary * {
-    cursor: pointer;
-}
-summary::marker {
-    display: inline;
-}
+summary {
+    &,
+    & * {
+        cursor: pointer;
+    }
 
-summary h2 {
-    display: inline;
-    font-size: 1.5em;
-    margin: 0;
-    margin-left: 0.5rem;
+    &::marker {
+        display: inline;
+    }
+
+    & h2 {
+        display: inline;
+        font-size: 1.5em;
+        margin: 0;
+        margin-left: 0.5rem;
+    }
 }
 
 div#disqus_thread {
@@ -283,40 +400,43 @@ div#disqus_thread {
 /*
  * Notes & Other Admonitions
  */
-div[class]:has(p) {
+div:not(:has(main))[class]:has(p) {
     /*
      * Kind of Like a Class
      */
 
     /*
-     ** Variables
+     * Variables
      */
-    --bg-color: lightgray;
+    --bg-color: var(--info-bg-color);
     --before-fg-color: white;
     --before-bg-color: gray;
-    
-    font-style: italic;
+
     margin-top: 1rem;
     background-color: var(--bg-color);
     padding: 0.2rem 0.5rem;
-    border-radius: 1rem ;
-    
-    & p , a {
-        color: black;
-        background-color: var(--bg-color);
+    border-radius: 1rem;
+    border: 0px solid #0000;
+    cursor: help;
+
+    & p,
+    a {
+        color: var(--fg);
+        background-color: #0000;
     }
 
-    & >* {
+    &>* {
         padding: 0.2rem 0.5rem;
     }
 
-    & > div.sourceCode {
+    &>div.sourceCode {
         padding: 0;
         margin: 0;
-        & > pre {
+
+        &>pre {
             margin: 0;
         }
-    } 
+    }
 
     &:hover::before {
         margin-left: -2em;
@@ -333,24 +453,28 @@ div[class]:has(p) {
         font-weight: bold;
         transition: margin-left 0.3s;
     }
-    & p::selection, a::selection  {
+
+    & p::selection,
+    a::selection {
         background-color: var(--before-bg-color);
         color: var(--before-fg-color);
     }
-    & > p:first-child{
-	display: none;
+
+    &>p:first-child {
+        display: none;
     }
 }
 
-div.warning:has(p) {   
-    --bg-color: #faa; 
-    --before-bg-color: red; 
+div.warning:has(p) {
+    --bg-color: var(--warning-bg-color) !important;
+    --before-bg-color: red !important;
 }
 
-div.note:has(p), div.disclaimer:has(p) {
-    --bg-color: lightyellow;
-    --before-bg-color: yellow;
-    --before-fg-color: black
+div.note:has(p),
+div.disclaimer:has(p) {
+    --bg-color: var(--note-bg-color) !important;
+    --before-bg-color: yellow !important;
+    --before-fg-color: black !important;
 }
 
 /*
@@ -360,13 +484,13 @@ div.note:has(p), div.disclaimer:has(p) {
 [wip]::before {
     content: "WORK IN PROGRESS";
     background: repeating-linear-gradient(-55deg,
-        #000000, #000000 15px,
-        #e2d529 15px, #e2d529 30px);
+            #000000, #000000 15px,
+            #e2d529 15px, #e2d529 30px);
     display: block;
     width: 100%;
     color: white;
     font-weight: bold;
-    font-family: sans-serif;
+    font-family: var(--sans);
     padding: 0.5em 0;
     text-align: center;
     border-radius: 0rem 0rem 1rem 1rem;
@@ -375,6 +499,6 @@ div.note:has(p), div.disclaimer:has(p) {
         1px 1px 2px black,
         1px -1px 2px black,
         -1px 1px 2px black,
-        -1px -1px 2px black;   
+        -1px -1px 2px black;
     top: 2;
 }</style>
