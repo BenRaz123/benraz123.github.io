@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Ben Raz Blog</title><link>https://benraz.dev/blog</link><description>My beautiful blog, delivered to you with next-generation RSS technology</description><pubDate>Tue, 26 Nov 2024 18:12:00 +0000</pubDate><item><title>The Process of Building This Website</title><link>https://benraz.dev/blog/website_process.html</link><description><div class="info">
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Ben Raz Blog</title><link>https://benraz.dev/blog</link><description>My beautiful blog, delivered to you with next-generation RSS technology</description><pubDate>Sat, 30 Nov 2024 11:55:38 +0000</pubDate><item><title>The Process of Building This Website</title><link>https://benraz.dev/blog/website_process.html</link><description><div class="info">
+<p>INFO:</p>
 <p>The source for this website can be found on my Github at <a
 href="https://github.com/benraz123/site">this link</a>. This site is
 hosted at <a
@@ -124,6 +125,7 @@ wrote the boilerplate necessary for sorting a
 of them. After a little <code>CSS</code>, it’s all done.</p>
 <h2 id="putting-it-all-together">Putting it all Together</h2>
 <div class="warning">
+<p>WARNING:</p>
 <p>While effort was made to make the script generic, it still contains a
 lot of hardcoded values. Additionally, it is not well-written or tested
 so do not expect for it to work. If you don’t want to get down and dirty

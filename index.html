@@ -54,6 +54,7 @@ href="https://crates.io/users/BenRaz123">crates.io</a>.</p>
         --note-bg-color: #221;
         --info-bg-color: #252525;
         --warning-bg-color: #251010;
+        --carrotssticks-bg-color: #251705;
     }
 }
 
@@ -65,6 +66,7 @@ href="https://crates.io/users/BenRaz123">crates.io</a>.</p>
         --note-bg-color: #ffc;
         --info-bg-color: lightgray;
         --warning-bg-color: #fcc;
+        --carrotssticks-bg-color: #ffefcc;
     }
 }
 
@@ -73,6 +75,10 @@ h2,
 h3,
 h4 {
     font-family: var(--title)
+}
+
+a {
+    word-wrap:break-word;
 }
 
 p {
@@ -97,6 +103,16 @@ a {
 h1 {
     font-size: 2.5rem;
     font-variation-settings: 'wght' 900;
+}
+
+/*
+ * Emojis
+ */
+
+span.emoji {
+    background-color: #0000;
+    margin: 0;
+    padding: 0;
 }
 
 /*
@@ -233,6 +249,8 @@ span.timestamp {
 
 ul {
     &>li {
+        list-style-type: "- ";
+
         &:has(span.ts, a) {
             color: var(--fg);
             list-style-type: "- ";
@@ -376,6 +394,7 @@ details {
 }
 
 summary {
+
     &,
     & * {
         cursor: pointer;
@@ -419,14 +438,21 @@ div:not(:has(main))[class]:has(p) {
     border: 0px solid #0000;
     cursor: help;
 
-    & p,
+    & ol,
+    ul,
+    li,
+    p,
     a {
         color: var(--fg);
         background-color: #0000;
     }
 
-    &>* {
+    &>*:not(ul) {
         padding: 0.2rem 0.5rem;
+    }
+
+    &>ul {
+        padding: 0.5rem 1.25rem;
     }
 
     &>div.sourceCode {
@@ -454,8 +480,7 @@ div:not(:has(main))[class]:has(p) {
         transition: margin-left 0.3s;
     }
 
-    & p::selection,
-    a::selection {
+    & *::selection {
         background-color: var(--before-bg-color);
         color: var(--before-fg-color);
     }
@@ -463,6 +488,12 @@ div:not(:has(main))[class]:has(p) {
     &>p:first-child {
         display: none;
     }
+}
+
+div[class="carrots/sticks"]:has(p) {
+    --before-bg-color: green !important;
+    --before-bf-color: black !important;
+    --bg-color: var(--carrotssticks-bg-color) !important;
 }
 
 div.warning:has(p) {
