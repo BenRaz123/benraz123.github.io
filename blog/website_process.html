@@ -1,719 +1,745 @@
 <!DOCTYPE html>
-<title>The Process of Building This Website - Ben Raz Blog</title>
+<html lang="en">
+
+<head>
+    <title>The Process of Building This Website - Ben Raz Blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
 <body blogpost >
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0"></script>
-<nav>
-    <a id="self-link" href="/">benraz.dev</a>
-    <div class="links-wrapper">
-        <a href="/about.html">about</a><span class="delim"> | </span><a href="/blog">blog</a><span class="delim"> | </span><a href="https://github.com/benraz123">github</a><span class="delim"> | </span><a href="https://crates.io/users/BenRaz123?sort=recent-updates">crates.io</a>
-    </div>
-</nav>
-<div class="main-container"><main >
-	<div class="nav-links-container"><a href="/">&lt;&lt; home</a><noscript class="hide"> </noscript><a href="/blog">&lt; blog</a></div>
-		<h1>The Process of Building This Website</h1>
-		<span class="timestamp"><code>[Published 2024-10-30 17:00:00
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0"></script>
+    <nav>
+        <a id="self-link" href="/">benraz.dev</a>
+        <div class="links-wrapper">
+            <a href="/about.html">about</a><span class="delim"> | </span><a href="/blog">blog</a><span class="delim"> | </span><a href="https://github.com/benraz123">github</a><span class="delim"> | </span><a href="https://crates.io/users/BenRaz123?sort=recent-updates">crates.io</a>
+        </div>
+    </nav>
+    <div class="main-container">
+        <main>
+            <div class="nav-links-container"><a href="/">&lt;&lt; home</a><noscript class="hide"> </noscript><a
+                    href="/blog">&lt; blog</a></div>
+            <h1>The Process of Building This Website</h1>
+            <span class="timestamp"><code>[Published 2024-10-30 17:00:00
 -04]</code></span><br>
-		        <span class="timestamp"><code>[Updated 2024-11-1 11:25:00
--04]</code></span>
-		        <hr>
-		<div class="info">
-<p>INFO:</p>
-<p>The source for this website can be found on my Github at <a
-href="https://github.com/benraz123/site">this link</a>. This site is
-hosted at <a
-href="https://github.com/benraz123/benraz123.github.io">this
-link</a>.</p>
-</div>
-<p>Welcome again to my brand-new website! I hope it doesn’t look too
-terrible. I wanted to, in an act of supreme originality, dedicate my
-first blog post to documenting the process used to conjure up this
-website, READMEs be damned.</p>
-<h2 id="the-original-idea">The Original Idea</h2>
-<p>My primary goal with this project was to build a low-effort
-text-oriented website. In order to make the hosting simple (I am using
-Github Pages here), a static output directory was needed. Additionally,
-creating an RSS feed was another goal, as while clearly the vast
-majority of people disagree with me, RSS feeds provide a superior
-user-experience. Why go to one website after another when you can see
-them all in one uniform, customisable reader that can be used offline
-and/or the terminal (yes, I know command-line browsers exist, but they
-are unusable for pretty much every single modern website). Now, I could
-have all of this by just writing HTML by hand, but where’s the fun in
-that? I’m a developer after all, which means I am dangerously addicted
-to Markdown (and sometimes orgmode). So my website’s content should be
-written in markdown and converted to html.</p>
-<h2 id="how-to-do-it">How to do it</h2>
-<p>We are in luck, as it turns out. Not only was Markdown written
-<em>for the purpose of</em> being converted to HTML, many converters
-from Markdown to HTML exist. The best of them in my experience is <a
-href="https://pandoc.org"><code>pandoc</code></a>. <code>pandoc</code>
-allows not just for converting markdown to html but also using
-templates. This is where the fun begins.</p>
-<h3 id="a-basic-pandoc-template">A Basic <code>Pandoc</code>
-Template</h3>
-<p>A basic <code>pandoc</code> template would look like this:</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>$title$<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+                        <span class="timestamp"><code>[Updated 2024-11-1
+11:25:00 -04]</code></span>
+                        <hr>
+            <div class="info">
+            <p>INFO:</p>
+            <p>The source for this website can be found on my Github at
+            <a href="https://github.com/benraz123/site">this link</a>.
+            This site is hosted at <a
+            href="https://github.com/benraz123/benraz123.github.io">this
+            link</a>.</p>
+            </div>
+            <p>Welcome again to my brand-new website! I hope it doesn’t
+            look too terrible. I wanted to, in an act of supreme
+            originality, dedicate my first blog post to documenting the
+            process used to conjure up this website, READMEs be
+            damned.</p>
+            <h2 id="the-original-idea">The Original Idea</h2>
+            <p>My primary goal with this project was to build a
+            low-effort text-oriented website. In order to make the
+            hosting simple (I am using Github Pages here), a static
+            output directory was needed. Additionally, creating an RSS
+            feed was another goal, as while clearly the vast majority of
+            people disagree with me, RSS feeds provide a superior
+            user-experience. Why go to one website after another when
+            you can see them all in one uniform, customisable reader
+            that can be used offline and/or the terminal (yes, I know
+            command-line browsers exist, but they are unusable for
+            pretty much every single modern website). Now, I could have
+            all of this by just writing HTML by hand, but where’s the
+            fun in that? I’m a developer after all, which means I am
+            dangerously addicted to Markdown (and sometimes orgmode). So
+            my website’s content should be written in markdown and
+            converted to html.</p>
+            <h2 id="how-to-do-it">How to do it</h2>
+            <p>We are in luck, as it turns out. Not only was Markdown
+            written <em>for the purpose of</em> being converted to HTML,
+            many converters from Markdown to HTML exist. The best of
+            them in my experience is <a
+            href="https://pandoc.org"><code>pandoc</code></a>.
+            <code>pandoc</code> allows not just for converting markdown
+            to html but also using templates. This is where the fun
+            begins.</p>
+            <h3 id="a-basic-pandoc-template">A Basic <code>Pandoc</code>
+            Template</h3>
+            <p>A basic <code>pandoc</code> template would look like
+            this:</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>$title$<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    Author: $author$</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">hr</span><span class="dt">&gt;</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    $content$</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
-<p>If we write the following markdown:</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+            <p>If we write the following markdown:</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Hello World</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> Albert Einstein</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>This is a very simple thing.</span></code></pre></div>
-<p>We could build it with the following command:</p>
-<pre><code>pandoc in.md -o out.html --template template.html</code></pre>
-<p>This would produce the following document:</p>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Hello World<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+            <p>We could build it with the following command:</p>
+            <pre><code>pandoc in.md -o out.html --template template.html</code></pre>
+            <p>This would produce the following document:</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Hello World<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Author: Albert Einstein<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">hr</span><span class="dt">&gt;</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>This is a very simple thing<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
-<p>This allows for us to use a sort of component system. For example,
-instead of writing the same navigation bar for two different templates,
-I can just parameterize the navigation bar. In my template file, I write
-this:</p>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>...</span>
+            <p>This allows for us to use a sort of component system. For
+            example, instead of writing the same navigation bar for two
+            different templates, I can just parameterize the navigation
+            bar. In my template file, I write this:</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>...</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>$navbar$</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>...</span></code></pre></div>
-<p>And I compile with the <code>-V navbar="$(cat navbar.html)"</code>
-flag. Just like that, we have a working component system (sort of).
-Putting all of this together, we have a working static site generator. I
-recommend the following directory structure as well:</p>
-<pre><code>/ (project root)
+            <p>And I compile with the
+            <code>-V navbar="$(cat navbar.html)"</code> flag. Just like
+            that, we have a working component system (sort of). Putting
+            all of this together, we have a working static site
+            generator. I recommend the following directory structure as
+            well:</p>
+            <pre><code>/ (project root)
 - blog/
 - templates/
 - components/
 - out/
   - blog/</code></pre>
-<h2 id="the-build-stage">The Build Stage</h2>
-<p>Now in order to put this all together, I whipped up a quick python
-script to build the site automatically, because running
-<code>pandoc</code> by hand get’s annoying, difficult, and error-prone
-if one has dozens of posts. I debated if I should have used
-<code>bash</code>, <code>make</code>, or even <code>fish</code>, but
-<code>python</code> ultimately won out as it is the simplest for me and
-allows for the most “programming”, useful because I do end up (sort of)
-serializing the blog posts.</p>
-<p>The heart of the script is the function <code>build_page()</code>.
-This function basically just wraps around a <code>pandoc</code> command
-to build a page with a template and add components. Here it is:</p>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_page(input_page: <span class="bu">str</span>, output_page: <span class="bu">str</span>, template: <span class="bu">str</span>, args: <span class="bu">dict</span>[<span class="bu">str</span>, <span class="bu">str</span>]):</span>
+            <h2 id="the-build-stage">The Build Stage</h2>
+            <p>Now in order to put this all together, I whipped up a
+            quick python script to build the site automatically, because
+            running <code>pandoc</code> by hand get’s annoying,
+            difficult, and error-prone if one has dozens of posts. I
+            debated if I should have used <code>bash</code>,
+            <code>make</code>, or even <code>fish</code>, but
+            <code>python</code> ultimately won out as it is the simplest
+            for me and allows for the most “programming”, useful because
+            I do end up (sort of) serializing the blog posts.</p>
+            <p>The heart of the script is the function
+            <code>build_page()</code>. This function basically just
+            wraps around a <code>pandoc</code> command to build a page
+            with a template and add components. Here it is:</p>
+            <div class="sourceCode" id="cb7"><pre
+            class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_page(input_page: <span class="bu">str</span>, output_page: <span class="bu">str</span>, template: <span class="bu">str</span>, args: <span class="bu">dict</span>[<span class="bu">str</span>, <span class="bu">str</span>]):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;[INFO] Transforming Page &#39;</span><span class="sc">{</span>input_page<span class="sc">}</span><span class="ss">&#39; into Page &#39;</span><span class="sc">{</span>output_page<span class="sc">}</span><span class="ss">&#39; with Template &#39;</span><span class="sc">{</span>template<span class="sc">}</span><span class="ss">&#39;&quot;</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    command <span class="op">=</span> <span class="ss">f&quot;pandoc &#39;</span><span class="sc">{</span>input_page<span class="sc">}</span><span class="ss">&#39; -o &#39;</span><span class="sc">{</span>output_page<span class="sc">}</span><span class="ss">&#39; --template &#39;</span><span class="sc">{</span>template<span class="sc">}</span><span class="ss">&#39; &quot;</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (arg, val) <span class="kw">in</span> args.items():</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        command <span class="op">+=</span> <span class="ss">f&quot;-V </span><span class="sc">{</span>arg<span class="sc">}</span><span class="ss">=</span><span class="ch">\&quot;</span><span class="ss">$(cat </span><span class="sc">{</span>val<span class="sc">}</span><span class="ss">)</span><span class="ch">\&quot;</span><span class="ss"> &quot;</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    os.system(command)</span></code></pre></div>
-<p>With this handy function, generating the about and index pages
-becomes very easy. All we have to do is run the
-<code>build_page()</code> function like this:</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate Index Page</span></span>
+            <p>With this handy function, generating the about and index
+            pages becomes very easy. All we have to do is run the
+            <code>build_page()</code> function like this:</p>
+            <div class="sourceCode" id="cb8"><pre
+            class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate Index Page</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>build_page(<span class="st">&quot;index.md&quot;</span>, <span class="st">&quot;out/index.html&quot;</span>, <span class="st">&quot;templates/page.html&quot;</span>, DEFAULT_ARGS)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate About Page</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>build_page(<span class="st">&quot;about.md&quot;</span>, <span class="st">&quot;out/about.html&quot;</span>, <span class="st">&quot;templates/page.html&quot;</span>, DEFAULT_ARGS)</span></code></pre></div>
-<p>The next thing to do is to build the blog posts and the blog index.
-For this I decided for some reason to abstract over a blog post with a
-class. However, in my defense, it was a <code>dataclass</code>.</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span></span>
+            <p>The next thing to do is to build the blog posts and the
+            blog index. For this I decided for some reason to abstract
+            over a blog post with a class. However, in my defense, it
+            was a <code>dataclass</code>.</p>
+            <div class="sourceCode" id="cb9"><pre
+            class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BlogPost():</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    published_date: datetime</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    updated_date: datetime</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    title: <span class="bu">str</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    contents: <span class="bu">str</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    location: <span class="bu">list</span>[<span class="bu">str</span>] </span></code></pre></div>
-<p>Why so many properties? The main reason was I wanted to be able to
-sort, list, and make into an RSS feed the blog posts. I additionally
-wrote the boilerplate necessary for sorting a
-<code>list[BlogPost]</code> (<code>__eq__()</code>,
-<code>__ne__()</code>, <code>__gt__()</code>, <code>__lt__()</code>,
-<code>__ge__()</code>, and <code>__le__()</code>).</p>
-<p>I wrote a function next for getting all blog posts and building all
-of them. After a little <code>CSS</code>, it’s all done.</p>
-<h2 id="putting-it-all-together">Putting it all Together</h2>
-<div class="warning">
-<p>WARNING:</p>
-<p>While effort was made to make the script generic, it still contains a
-lot of hardcoded values. Additionally, it is not well-written or tested
-so do not expect for it to work. If you don’t want to get down and dirty
-in the details, don’t use it. There are plenty of SSGs around and I
-don’t want to rob you of the fun of writing your own.</p>
-</div>
-<p>To summarize, I basically created a crappy SSG with
-<code>python</code> and <code>pandoc</code>. If anyone for any reason
-wants to see it, the site is contained in two repositories, <a
-href="https://github.com/benraz123/site">this one</a> for the source and
-<a href="https://github.com/benraz123/benraz123.github.io">this one</a>
-for the build.</p>
-	<hr>
-    <details class="comments"><summary><h2>Comments (Disqus)</h2></summary><div id="disqus_thread"></div></details>
-	<details class="comments"><summary><h2>Comments (Facebook)</h2></summary><div class="fb-comments" data-href="https://benraz.dev/blog/website_process.html" data-width="" data-numposts="10"></div></details>
-    <script>
-    /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-    /*
-    var disqus_config = function () {
-    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://benrazdev.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        </details>
-<footer>
-    All content is licensed under the MIT license unless otherwise posted. (Ben Raz <span id="year-update">2024</span>)
-    <script>
-        document.querySelector("#year-update").innerHTML = new Date().getFullYear()
-    </script>
-</footer>
-	</main></div>
+            <p>Why so many properties? The main reason was I wanted to
+            be able to sort, list, and make into an RSS feed the blog
+            posts. I additionally wrote the boilerplate necessary for
+            sorting a <code>list[BlogPost]</code>
+            (<code>__eq__()</code>, <code>__ne__()</code>,
+            <code>__gt__()</code>, <code>__lt__()</code>,
+            <code>__ge__()</code>, and <code>__le__()</code>).</p>
+            <p>I wrote a function next for getting all blog posts and
+            building all of them. After a little <code>CSS</code>, it’s
+            all done.</p>
+            <h2 id="putting-it-all-together">Putting it all
+            Together</h2>
+            <div class="warning">
+            <p>WARNING:</p>
+            <p>While effort was made to make the script generic, it
+            still contains a lot of hardcoded values. Additionally, it
+            is not well-written or tested so do not expect for it to
+            work. If you don’t want to get down and dirty in the
+            details, don’t use it. There are plenty of SSGs around and I
+            don’t want to rob you of the fun of writing your own.</p>
+            </div>
+            <p>To summarize, I basically created a crappy SSG with
+            <code>python</code> and <code>pandoc</code>. If anyone for
+            any reason wants to see it, the site is contained in two
+            repositories, <a
+            href="https://github.com/benraz123/site">this one</a> for
+            the source and <a
+            href="https://github.com/benraz123/benraz123.github.io">this
+            one</a> for the build.</p>
+            <hr>
+            <details class="comments">
+                <summary>
+                    <h2>Comments (Disqus)</h2>
+                </summary>
+                <div id="disqus_thread"></div>
+            </details>
+            <details class="comments">
+                <summary>
+                    <h2>Comments (Facebook)</h2>
+                </summary>
+                <div class="fb-comments" data-href="https://benraz.dev/blog/website_process.html" data-width="" data-numposts="10"></div>
+            </details>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function () { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://benrazdev.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered
+                    by Disqus.</a></noscript>
+            </details>
+            <footer>
+                All content is licensed under the MIT license unless otherwise posted. (Ben Raz <span id="year-update">2024</span>)
+                <script>
+                    document.querySelector("#year-update").innerHTML = new Date().getFullYear()
+                </script>
+            </footer>
+        </main>
+    </div>
 </body>
 <style>
-/*
- * General Settings
- */
-
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-@font-face {
-	font-family: "cantvf";
-	src: url('/assets/Cantarell-VF.woff2') format('woff2')
-}
-
-:root {
-	--sans: "cantvf", "system-ui", "Verdana", "Tahoma", sans-serif;
-	--title: var(sans);
-	--mono: "Ubuntu Mono", "DejaVu Sans Mono", monospace;
-	--red: darkred;
-	--green: darkgreen;
-	--blue: blue;
-	--magenta: darkmagenta;
-	--orange: darkorange;
-	--yellow: darkgoldenrod;
-	--pink: fuchsia;
-	--code-block-bg: rgba(0,0,0,0.13333);
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--fg: white;
-		--bg: #161616;
-		--accent: #7744aa;
-		--note-bg-color: #221;
-		--info-bg-color: #252525;
-		--warning-bg-color: #251010;
-		--carrotssticks-bg-color: #251705;
-	}
-}
-
-@media (prefers-color-scheme: light) {
-	:root {
-		--fg: black;
-		--bg: white;
-		--accent: #639;
-		--note-bg-color: #ffc;
-		--info-bg-color: lightgray;
-		--warning-bg-color: #fcc;
-		--carrotssticks-bg-color: #ffefcc;
-	}
-}
-
-h1,
-h2,
-h3,
-h4 {
-	font-family: var(--title)
-}
-
-a {
-	word-wrap: break-word;
-}
-
-p {
-	line-height: 1.25rem;
-}
-
-* {
-	font-family: "cantvf", "system-ui", "Verdana", "Tahoma", sans-serif;
-	font-family: var(--sans);
-	color: var(--fg);
-	background-color: var(--bg);
-}
-
-h1,
-h2 {
-	font-weight: 800;
-}
-
-a {
-	color: var(--accent);
-}
-
-h1 {
-	font-size: 2.5rem;
-	font-variation-settings: 'wght' 900;
-}
-
-/*
- * Emojis
- */
-
-span.emoji {
-	background-color: rgba(0,0,0,0);
-	margin: 0;
-	padding: 0;
-}
-
-/*
- * Text Selection
- */
-
-*::-moz-selection {
-	background-color: var(--accent);
-	color: var(--bg);
-}
-
-*::selection {
-	background-color: var(--accent);
-	color: var(--bg);
-}
-
-/*
- * Main and Footer Margin
- */
-
-body {
-	margin: 0
-}
-
-.main-container {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	align-items: center;
-}
-
-@media screen and (min-width: 800px) {
-	main {
-		width: 70rem;
-	}
-}
-
-main>*,
-footer {
-	margin-left: 20%;
-	margin-right: 20%;
-}
-
-@media screen and (max-width: 500px) {
-	main {
-		width: none;
-	}
-
-	main>*,
-	footer {
-		margin-left: 2%;
-		margin-right: 2%;
-	}
-}
-
-@media screen and (min-width: 501px) {
-
-	pre:not([class]),
-	main div.sourcecode {
-		margin-left: 15%;
-		margin-right: 15%;
-	}
-}
-
-/*nav,
-nav * {
-    max-width: none
-}*/
-
-/* 
- * Footer Color & Font Size
- */
-
-footer,
-footer * {
-	color: gray
-}
-
-footer {
-	margin-top: 5rem;
-	margin-bottom: 2rem;
-	font-size: smaller;
-}
-
-footer * {
-	font-size: inherit;
-}
-
-/*
- * Navbar Layout & Styling
- */
-
-nav {
-	padding: 1rem 2rem;
-	margin: 0;
-	margin-bottom: 1rem;
-	display: flex;
-	justify-content: space-between;
-	border-top: 1px solid white;
-	border-bottom: 2px solid var(--accent);
-	/*filter: drop-shadow(0px 5px 10px #050505);*/
-	position: sticky;
-	top: 0;
-	z-index: 0
-}
-
-nav a {
-	color: var(--fg);
-}
-
-#self-link {
-	font-weight: bold
-}
-
-.delim {
-	color: gray;
-	-webkit-user-select: none;
-	   -moz-user-select: none;
-	        user-select: none;
-}
-
-/*
- * Timestamp Styles
- */
-
-span.timestamp {
-	margin-right: 0;
-}
-
-span.timestamp,span.timestamp * {
-		padding: 0;
-		background-color: rgba(0,0,0,0);
-		color: gray;
-		font-family: "Ubuntu Mono", "DejaVu Sans Mono", monospace;
-		font-family: var(--mono)
-	}
-
-/*
- * Blog Posts List
- */
-
-ul > li {
-		list-style-type: "- ";
-	}
-
-ul > li:has(span.ts,a) {
-			color: var(--fg);
-			list-style-type: "- ";
-		}
-
-ul > li:has(span.ts,a:hover) {
-			color: var(--accent);
-			list-style-type: "> ";
-		}
-
-ul > li::marker {
-			font-family: "Ubuntu Mono", "DejaVu Sans Mono", monospace;
-			font-family: var(--mono);
-		}
-
-/*
- * Blog Post Upper Links
- */
-
-.nav-links-container {
-	display: flex;
-	gap: 1rem;
-}
-
-/* This element is only supposed to show when CSS and JS are disabled */
-noscript.hide {
-	display: none;
-}
-
-/*
- * Blog Post hr
- */
-
-main>hr {
-	border: 0.5px solid rgba(255,255,255,0.13333);
-	margin-top: 1rem;
-}
-
-/*
- * Code Block Styling
- */
-
-code {
-	background-color: rgba(0,0,0,0.13333);
-	background-color: var(--code-block-bg);
-	font-family: "Ubuntu Mono", "DejaVu Sans Mono", monospace;
-	font-family: var(--mono);
-	padding: 1px 7px 2px 7px;
-	border-radius: 5px;
-}
-
-pre {
-	background-color: rgba(0,0,0,0.13333);
-	background-color: var(--code-block-bg);
-	padding: 1rem;
-	white-space: pre-wrap;
-	border-radius: 0.5rem;
-}
-
-pre code {
-	padding: 0;
-}
-
-pre * {
-	margin: 0;
-	font-family: "Ubuntu Mono", "DejaVu Sans Mono", monospace;
-	font-family: var(--mono);
-	background-color: rgba(0,0,0,0);
-}
-
-pre>code>span:first-child {
-	margin-left: 0em
-}
-
-span.kw {
-	color: darkred;
-	color: var(--red);
-	font-weight: bold
-}
-
-span.at {
-	color: darkmagenta;
-	color: var(--magenta);
-	font-weight: bold
-}
-
-span.dt {
-	color: blue;
-	color: var(--blue)
-}
-
-span.fu {
-	color: darkgoldenrod;
-	color: var(--yellow)
-}
-
-span.bu {
-	color: blue;
-	color: var(--blue)
-}
-
-span.op {
-	color: darkred;
-	color: var(--red)
-}
-
-span.cf {
-	color: fuchsia;
-	color: var(--pink);
-	font-weight: bold
-}
-
-span.co {
-	color: gray;
-}
-
-span.an {
-	color: darkgoldenrod;
-	color: var(--yellow);
-	font-weight: bold
-}
-
-span.va {
-	color: var(--fg);
-	font-weight: bold
-}
-
-span.st {
-	color: darkgreen;
-	color: var(--green)
-}
-
-span.ss {
-	color: darkgreen;
-	color: var(--green)
-}
-
-span.sc {
-	color: darkgreen;
-	color: var(--green);
-	font-weight: bold
-}
-
-span.ch {
-	color: darkmagenta;
-	color: var(--magenta)
-}
-
-/*
- * Styles for comments 
- */
-
-
-details {
-	margin-top: 1rem;
-}
-
-summary,summary * {
-		cursor: pointer;
-	}
-
-summary::marker {
-		display: inline;
-	}
-
-summary h2 {
-		display: inline;
-		font-size: 1.5em;
-		margin: 0;
-		margin-left: 0.5rem;
-	}
-
-div#disqus_thread {
-	margin-top: 1rem;
-}
-
-/*
- * Notes & Other Admonitions
- */
-div:not(:has(main))[class]:has(p) {
-	/*
-	 * Kind of Like a Class
-     	 */
-
-	/*
-	 * Variables
-     	 */
-	--bg-color: var(--info-bg-color);
-	--before-fg-color: white;
-	--before-bg-color: gray;
-
-	margin-top: 1rem;
-	background-color: var(--bg-color);
-	padding: 0.2rem 0.5rem;
-	border-radius: 1rem;
-	border: 0px solid rgba(0,0,0,0);
-	cursor: help;
-}
-div[class]:not(:has(main)):has(p) *:not(code) {
-		color: var(--fg);
-		background-color: rgba(0,0,0,0);
-	}
-div[class]:not(:has(main)):has(p) > *:not(ul) {
-		padding: 0.2rem 0.5rem;
-	}
-div[class]:not(:has(main)):has(p) > ul {
-		padding: 0.5rem 1.25rem;
-	}
-div[class]:not(:has(main)):has(p) > div.sourceCode {
-		padding: 0;
-		margin: 0;
-	}
-div[class]:not(:has(main)):has(p) > div.sourceCode > pre {
-			margin: 0;
-		}
-div[class]:not(:has(main)):has(p):hover::before {
-		margin-left: -2em;
-	}
-div[class]:not(:has(main)):has(p)::before {
-		font-style: normal;
-		color: var(--before-fg-color);
-		background-color: var(--before-bg-color);
-		padding: 0.5rem;
-		text-transform: capitalize;
-		content: attr(class);
-		margin-left: -1em;
-		font-weight: bold;
-		transition: margin-left 0.3s;
-	}
-div[class]:not(:has(main)):has(p) *::-moz-selection {
-		background-color: var(--before-bg-color);
-		color: var(--before-fg-color);
-	}
-div[class]:not(:has(main)):has(p) *::selection {
-		background-color: var(--before-bg-color);
-		color: var(--before-fg-color);
-	}
-div[class]:not(:has(main)):has(p) > p:first-child {
-		display: none;
-	}
-
-div[class="carrots/sticks"]:has(p) {
-	--before-bg-color: green !important;
-	--before-bf-color: black !important;
-	--bg-color: var(--carrotssticks-bg-color) !important;
-}
-
-div.warning:has(p) {
-	--bg-color: var(--warning-bg-color) !important;
-	--before-bg-color: red !important;
-}
-
-div.note:has(p),
-div.disclaimer:has(p) {
-	--bg-color: var(--note-bg-color) !important;
-	--before-bg-color: yellow !important;
-	--before-fg-color: black !important;
-}
-
-/*
- * WIP Banner
- */
-
-[wip]::before {
-	content: "WORK IN PROGRESS";
-	background: repeating-linear-gradient(-55deg,
-			#000000, #000000 15px,
-			#e2d529 15px, #e2d529 30px);
-	display: block;
-	width: 100%;
-	color: white;
-	font-weight: bold;
-	font-family: "cantvf", "system-ui", "Verdana", "Tahoma", sans-serif;
-	font-family: var(--sans);
-	padding: 0.5em 0;
-	text-align: center;
-	border-radius: 0rem 0rem 1rem 1rem;
-	position: sticky;
-	text-shadow:
-		1px 1px 2px black,
-		1px -1px 2px black,
-		-1px 1px 2px black,
-		-1px -1px 2px black;
-	top: 2;
-}
-
-/*# sourceMappingURL=data:application/json;base64,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LmNvbXBsaWFudHN0eWxlcy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuICogR2VuZXJhbCBTZXR0aW5nc1xuICovXG5cbkBpbXBvcnQgdXJsKCdodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PVVidW50dStNb25vOml0YWwsd2dodEAwLDQwMDswLDcwMDsxLDQwMDsxLDcwMCZkaXNwbGF5PXN3YXAnKTtcblxuQGZvbnQtZmFjZSB7XG5cdGZvbnQtZmFtaWx5OiBcImNhbnR2ZlwiO1xuXHRzcmM6IHVybCgnL2Fzc2V0cy9DYW50YXJlbGwtVkYud29mZjInKSBmb3JtYXQoJ3dvZmYyJylcbn1cblxuOnJvb3Qge1xuXHQtLXNhbnM6IFwiY2FudHZmXCIsIFwic3lzdGVtLXVpXCIsIFwiVmVyZGFuYVwiLCBcIlRhaG9tYVwiLCBzYW5zLXNlcmlmO1xuXHQtLXRpdGxlOiB2YXIoc2Fucyk7XG5cdC0tbW9ubzogXCJVYnVudHUgTW9ub1wiLCBcIkRlamFWdSBTYW5zIE1vbm9cIiwgbW9ub3NwYWNlO1xuXHQtLXJlZDogZGFya3JlZDtcblx0LS1ncmVlbjogZGFya2dyZWVuO1xuXHQtLWJsdWU6IGJsdWU7XG5cdC0tbWFnZW50YTogZGFya21hZ2VudGE7XG5cdC0tb3JhbmdlOiBkYXJrb3JhbmdlO1xuXHQtLXllbGxvdzogZGFya2dvbGRlbnJvZDtcblx0LS1waW5rOiBmdWNoc2lhO1xuXHQtLWNvZGUtYmxvY2stYmc6ICMwMDAyO1xufVxuXG5AbWVkaWEgKHByZWZlcnMtY29sb3Itc2NoZW1lOiBkYXJrKSB7XG5cdDpyb290IHtcblx0XHQtLWZnOiB3aGl0ZTtcblx0XHQtLWJnOiAjMTYxNjE2O1xuXHRcdC0tYWNjZW50OiAjNzc0NGFhO1xuXHRcdC0tbm90ZS1iZy1jb2xvcjogIzIyMTtcblx0XHQtLWluZm8tYmctY29sb3I6ICMyNTI1MjU7XG5cdFx0LS13YXJuaW5nLWJnLWNvbG9yOiAjMjUxMDEwO1xuXHRcdC0tY2Fycm90c3N0aWNrcy1iZy1jb2xvcjogIzI1MTcwNTtcblx0fVxufVxuXG5AbWVkaWEgKHByZWZlcnMtY29sb3Itc2NoZW1lOiBsaWdodCkge1xuXHQ6cm9vdCB7XG5cdFx0LS1mZzogYmxhY2s7XG5cdFx0LS1iZzogd2hpdGU7XG5cdFx0LS1hY2NlbnQ6IHJlYmVjY2FwdXJwbGU7XG5cdFx0LS1ub3RlLWJnLWNvbG9yOiAjZmZjO1xuXHRcdC0taW5mby1iZy1jb2xvcjogbGlnaHRncmF5O1xuXHRcdC0td2FybmluZy1iZy1jb2xvcjogI2ZjYztcblx0XHQtLWNhcnJvdHNzdGlja3MtYmctY29sb3I6ICNmZmVmY2M7XG5cdH1cbn1cblxuaDEsXG5oMixcbmgzLFxuaDQge1xuXHRmb250LWZhbWlseTogdmFyKC0tdGl0bGUpXG59XG5cbmEge1xuXHR3b3JkLXdyYXA6IGJyZWFrLXdvcmQ7XG59XG5cbnAge1xuXHRsaW5lLWhlaWdodDogMS4yNXJlbTtcbn1cblxuKiB7XG5cdGZvbnQtZmFtaWx5OiB2YXIoLS1zYW5zKTtcblx0Y29sb3I6IHZhcigtLWZnKTtcblx0YmFja2dyb3VuZC1jb2xvcjogdmFyKC0tYmcpO1xufVxuXG5oMSxcbmgyIHtcblx0Zm9udC13ZWlnaHQ6IDgwMDtcbn1cblxuYSB7XG5cdGNvbG9yOiB2YXIoLS1hY2NlbnQpO1xufVxuXG5oMSB7XG5cdGZvbnQtc2l6ZTogMi41cmVtO1xuXHRmb250LXZhcmlhdGlvbi1zZXR0aW5nczogJ3dnaHQnIDkwMDtcbn1cblxuLypcbiAqIEVtb2ppc1xuICovXG5cbnNwYW4uZW1vamkge1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwMDtcblx0bWFyZ2luOiAwO1xuXHRwYWRkaW5nOiAwO1xufVxuXG4vKlxuICogVGV4dCBTZWxlY3Rpb25cbiAqL1xuXG4qOjpzZWxlY3Rpb24ge1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1hY2NlbnQpO1xuXHRjb2xvcjogdmFyKC0tYmcpO1xufVxuXG4vKlxuICogTWFpbiBhbmQgRm9vdGVyIE1hcmdpblxuICovXG5cbmJvZHkge1xuXHRtYXJnaW46IDBcbn1cblxuLm1haW4tY29udGFpbmVyIHtcblx0ZGlzcGxheTogZmxleDtcblx0ZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcblx0d2lkdGg6IDEwMCU7XG5cdGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDgwMHB4KSB7XG5cdG1haW4ge1xuXHRcdHdpZHRoOiA3MHJlbTtcblx0fVxufVxuXG5tYWluPiosXG5mb290ZXIge1xuXHRtYXJnaW4tbGVmdDogMjAlO1xuXHRtYXJnaW4tcmlnaHQ6IDIwJTtcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogNTAwcHgpIHtcblx0bWFpbiB7XG5cdFx0d2lkdGg6IG5vbmU7XG5cdH1cblxuXHRtYWluPiosXG5cdGZvb3RlciB7XG5cdFx0bWFyZ2luLWxlZnQ6IDIlO1xuXHRcdG1hcmdpbi1yaWdodDogMiU7XG5cdH1cbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogNTAxcHgpIHtcblxuXHRwcmU6bm90KFtjbGFzc10pLFxuXHRtYWluIGRpdi5zb3VyY2Vjb2RlIHtcblx0XHRtYXJnaW4tbGVmdDogMTUlO1xuXHRcdG1hcmdpbi1yaWdodDogMTUlO1xuXHR9XG59XG5cbi8qbmF2LFxubmF2ICoge1xuICAgIG1heC13aWR0aDogbm9uZVxufSovXG5cbi8qIFxuICogRm9vdGVyIENvbG9yICYgRm9udCBTaXplXG4gKi9cblxuZm9vdGVyLFxuZm9vdGVyICoge1xuXHRjb2xvcjogZ3JheVxufVxuXG5mb290ZXIge1xuXHRtYXJnaW4tdG9wOiA1cmVtO1xuXHRtYXJnaW4tYm90dG9tOiAycmVtO1xuXHRmb250LXNpemU6IHNtYWxsZXI7XG59XG5cbmZvb3RlciAqIHtcblx0Zm9udC1zaXplOiBpbmhlcml0O1xufVxuXG4vKlxuICogTmF2YmFyIExheW91dCAmIFN0eWxpbmdcbiAqL1xuXG5uYXYge1xuXHRwYWRkaW5nOiAxcmVtIDJyZW07XG5cdG1hcmdpbjogMDtcblx0bWFyZ2luLWJvdHRvbTogMXJlbTtcblx0ZGlzcGxheTogZmxleDtcblx0anVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuXHRib3JkZXItdG9wOiAxcHggc29saWQgd2hpdGU7XG5cdGJvcmRlci1ib3R0b206IDJweCBzb2xpZCB2YXIoLS1hY2NlbnQpO1xuXHQvKmZpbHRlcjogZHJvcC1zaGFkb3coMHB4IDVweCAxMHB4ICMwNTA1MDUpOyovXG5cdHBvc2l0aW9uOiBzdGlja3k7XG5cdHRvcDogMDtcblx0ei1pbmRleDogMFxufVxuXG5uYXYgYSB7XG5cdGNvbG9yOiB2YXIoLS1mZyk7XG59XG5cbiNzZWxmLWxpbmsge1xuXHRmb250LXdlaWdodDogYm9sZFxufVxuXG4uZGVsaW0ge1xuXHRjb2xvcjogZ3JheTtcblx0dXNlci1zZWxlY3Q6IG5vbmU7XG59XG5cbi8qXG4gKiBUaW1lc3RhbXAgU3R5bGVzXG4gKi9cblxuc3Bhbi50aW1lc3RhbXAge1xuXHRtYXJnaW4tcmlnaHQ6IDA7XG5cblx0Jixcblx0KiB7XG5cdFx0cGFkZGluZzogMDtcblx0XHRiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwMDtcblx0XHRjb2xvcjogZ3JheTtcblx0XHRmb250LWZhbWlseTogdmFyKC0tbW9ubylcblx0fVxufVxuXG4vKlxuICogQmxvZyBQb3N0cyBMaXN0XG4gKi9cblxudWwge1xuXHQmPmxpIHtcblx0XHRsaXN0LXN0eWxlLXR5cGU6IFwiLSBcIjtcblxuXHRcdCY6aGFzKHNwYW4udHMsIGEpIHtcblx0XHRcdGNvbG9yOiB2YXIoLS1mZyk7XG5cdFx0XHRsaXN0LXN0eWxlLXR5cGU6IFwiLSBcIjtcblx0XHR9XG5cblx0XHQmOmhhcyhzcGFuLnRzLCBhOmhvdmVyKSB7XG5cdFx0XHRjb2xvcjogdmFyKC0tYWNjZW50KTtcblx0XHRcdGxpc3Qtc3R5bGUtdHlwZTogXCI+IFwiO1xuXHRcdH1cblxuXHRcdCY6Om1hcmtlciB7XG5cdFx0XHRmb250LWZhbWlseTogdmFyKC0tbW9ubyk7XG5cdFx0fVxuXHR9XG59XG5cbi8qXG4gKiBCbG9nIFBvc3QgVXBwZXIgTGlua3NcbiAqL1xuXG4ubmF2LWxpbmtzLWNvbnRhaW5lciB7XG5cdGRpc3BsYXk6IGZsZXg7XG5cdGdhcDogMXJlbTtcbn1cblxuLyogVGhpcyBlbGVtZW50IGlzIG9ubHkgc3VwcG9zZWQgdG8gc2hvdyB3aGVuIENTUyBhbmQgSlMgYXJlIGRpc2FibGVkICovXG5ub3NjcmlwdC5oaWRlIHtcblx0ZGlzcGxheTogbm9uZTtcbn1cblxuLypcbiAqIEJsb2cgUG9zdCBoclxuICovXG5cbm1haW4+aHIge1xuXHRib3JkZXI6IDAuNXB4IHNvbGlkICNmZmYyO1xuXHRtYXJnaW4tdG9wOiAxcmVtO1xufVxuXG4vKlxuICogQ29kZSBCbG9jayBTdHlsaW5nXG4gKi9cblxuY29kZSB7XG5cdGJhY2tncm91bmQtY29sb3I6IHZhcigtLWNvZGUtYmxvY2stYmcpO1xuXHRmb250LWZhbWlseTogdmFyKC0tbW9ubyk7XG5cdHBhZGRpbmc6IDFweCA3cHggMnB4IDdweDtcblx0Ym9yZGVyLXJhZGl1czogNXB4O1xufVxuXG5wcmUge1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1jb2RlLWJsb2NrLWJnKTtcblx0cGFkZGluZzogMXJlbTtcblx0d2hpdGUtc3BhY2U6IHByZS13cmFwO1xuXHRib3JkZXItcmFkaXVzOiAwLjVyZW07XG59XG5cbnByZSBjb2RlIHtcblx0cGFkZGluZzogMDtcbn1cblxucHJlICoge1xuXHRtYXJnaW46IDA7XG5cdGZvbnQtZmFtaWx5OiB2YXIoLS1tb25vKTtcblx0YmFja2dyb3VuZC1jb2xvcjogIzAwMDA7XG59XG5cbnByZT5jb2RlPnNwYW46Zmlyc3QtY2hpbGQge1xuXHRtYXJnaW4tbGVmdDogMGVtXG59XG5cbnNwYW4ua3cge1xuXHRjb2xvcjogdmFyKC0tcmVkKTtcblx0Zm9udC13ZWlnaHQ6IGJvbGRcbn1cblxuc3Bhbi5hdCB7XG5cdGNvbG9yOiB2YXIoLS1tYWdlbnRhKTtcblx0Zm9udC13ZWlnaHQ6IGJvbGRcbn1cblxuc3Bhbi5kdCB7XG5cdGNvbG9yOiB2YXIoLS1ibHVlKVxufVxuXG5zcGFuLmZ1IHtcblx0Y29sb3I6IHZhcigtLXllbGxvdylcbn1cblxuc3Bhbi5idSB7XG5cdGNvbG9yOiB2YXIoLS1ibHVlKVxufVxuXG5zcGFuLm9wIHtcblx0Y29sb3I6IHZhcigtLXJlZClcbn1cblxuc3Bhbi5jZiB7XG5cdGNvbG9yOiB2YXIoLS1waW5rKTtcblx0Zm9udC13ZWlnaHQ6IGJvbGRcbn1cblxuc3Bhbi5jbyB7XG5cdGNvbG9yOiBncmF5O1xufVxuXG5zcGFuLmFuIHtcblx0Y29sb3I6IHZhcigtLXllbGxvdyk7XG5cdGZvbnQtd2VpZ2h0OiBib2xkXG59XG5cbnNwYW4udmEge1xuXHRjb2xvcjogdmFyKC0tZmcpO1xuXHRmb250LXdlaWdodDogYm9sZFxufVxuXG5zcGFuLnN0IHtcblx0Y29sb3I6IHZhcigtLWdyZWVuKVxufVxuXG5zcGFuLnNzIHtcblx0Y29sb3I6IHZhcigtLWdyZWVuKVxufVxuXG5zcGFuLnNjIHtcblx0Y29sb3I6IHZhcigtLWdyZWVuKTtcblx0Zm9udC13ZWlnaHQ6IGJvbGRcbn1cblxuc3Bhbi5jaCB7XG5cdGNvbG9yOiB2YXIoLS1tYWdlbnRhKVxufVxuXG4vKlxuICogU3R5bGVzIGZvciBjb21tZW50cyBcbiAqL1xuXG5cbmRldGFpbHMge1xuXHRtYXJnaW4tdG9wOiAxcmVtO1xufVxuXG5zdW1tYXJ5IHtcblxuXHQmLFxuXHQmICoge1xuXHRcdGN1cnNvcjogcG9pbnRlcjtcblx0fVxuXG5cdCY6Om1hcmtlciB7XG5cdFx0ZGlzcGxheTogaW5saW5lO1xuXHR9XG5cblx0JiBoMiB7XG5cdFx0ZGlzcGxheTogaW5saW5lO1xuXHRcdGZvbnQtc2l6ZTogMS41ZW07XG5cdFx0bWFyZ2luOiAwO1xuXHRcdG1hcmdpbi1sZWZ0OiAwLjVyZW07XG5cdH1cbn1cblxuZGl2I2Rpc3F1c190aHJlYWQge1xuXHRtYXJnaW4tdG9wOiAxcmVtO1xufVxuXG4vKlxuICogTm90ZXMgJiBPdGhlciBBZG1vbml0aW9uc1xuICovXG5kaXY6bm90KDpoYXMobWFpbikpW2NsYXNzXTpoYXMocCkge1xuXHQvKlxuXHQgKiBLaW5kIG9mIExpa2UgYSBDbGFzc1xuICAgICBcdCAqL1xuXG5cdC8qXG5cdCAqIFZhcmlhYmxlc1xuICAgICBcdCAqL1xuXHQtLWJnLWNvbG9yOiB2YXIoLS1pbmZvLWJnLWNvbG9yKTtcblx0LS1iZWZvcmUtZmctY29sb3I6IHdoaXRlO1xuXHQtLWJlZm9yZS1iZy1jb2xvcjogZ3JheTtcblxuXHRtYXJnaW4tdG9wOiAxcmVtO1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1iZy1jb2xvcik7XG5cdHBhZGRpbmc6IDAuMnJlbSAwLjVyZW07XG5cdGJvcmRlci1yYWRpdXM6IDFyZW07XG5cdGJvcmRlcjogMHB4IHNvbGlkICMwMDAwO1xuXHRjdXJzb3I6IGhlbHA7XG5cblx0JiAqOm5vdChjb2RlKSB7XG5cdFx0Y29sb3I6IHZhcigtLWZnKTtcblx0XHRiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwMDtcblx0fVxuXG5cdCY+Kjpub3QodWwpIHtcblx0XHRwYWRkaW5nOiAwLjJyZW0gMC41cmVtO1xuXHR9XG5cblx0Jj51bCB7XG5cdFx0cGFkZGluZzogMC41cmVtIDEuMjVyZW07XG5cdH1cblxuXHQmPmRpdi5zb3VyY2VDb2RlIHtcblx0XHRwYWRkaW5nOiAwO1xuXHRcdG1hcmdpbjogMDtcblxuXHRcdCY+cHJlIHtcblx0XHRcdG1hcmdpbjogMDtcblx0XHR9XG5cdH1cblxuXHQmOmhvdmVyOjpiZWZvcmUge1xuXHRcdG1hcmdpbi1sZWZ0OiAtMmVtO1xuXHR9XG5cblx0Jjo6YmVmb3JlIHtcblx0XHRmb250LXN0eWxlOiBub3JtYWw7XG5cdFx0Y29sb3I6IHZhcigtLWJlZm9yZS1mZy1jb2xvcik7XG5cdFx0YmFja2dyb3VuZC1jb2xvcjogdmFyKC0tYmVmb3JlLWJnLWNvbG9yKTtcblx0XHRwYWRkaW5nOiAwLjVyZW07XG5cdFx0dGV4dC10cmFuc2Zvcm06IGNhcGl0YWxpemU7XG5cdFx0Y29udGVudDogYXR0cihjbGFzcyk7XG5cdFx0bWFyZ2luLWxlZnQ6IC0xZW07XG5cdFx0Zm9udC13ZWlnaHQ6IGJvbGQ7XG5cdFx0dHJhbnNpdGlvbjogbWFyZ2luLWxlZnQgMC4zcztcblx0fVxuXG5cdCYgKjo6c2VsZWN0aW9uIHtcblx0XHRiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1iZWZvcmUtYmctY29sb3IpO1xuXHRcdGNvbG9yOiB2YXIoLS1iZWZvcmUtZmctY29sb3IpO1xuXHR9XG5cblx0Jj5wOmZpcnN0LWNoaWxkIHtcblx0XHRkaXNwbGF5OiBub25lO1xuXHR9XG59XG5cbmRpdltjbGFzcz1cImNhcnJvdHMvc3RpY2tzXCJdOmhhcyhwKSB7XG5cdC0tYmVmb3JlLWJnLWNvbG9yOiBncmVlbiAhaW1wb3J0YW50O1xuXHQtLWJlZm9yZS1iZi1jb2xvcjogYmxhY2sgIWltcG9ydGFudDtcblx0LS1iZy1jb2xvcjogdmFyKC0tY2Fycm90c3N0aWNrcy1iZy1jb2xvcikgIWltcG9ydGFudDtcbn1cblxuZGl2Lndhcm5pbmc6aGFzKHApIHtcblx0LS1iZy1jb2xvcjogdmFyKC0td2FybmluZy1iZy1jb2xvcikgIWltcG9ydGFudDtcblx0LS1iZWZvcmUtYmctY29sb3I6IHJlZCAhaW1wb3J0YW50O1xufVxuXG5kaXYubm90ZTpoYXMocCksXG5kaXYuZGlzY2xhaW1lcjpoYXMocCkge1xuXHQtLWJnLWNvbG9yOiB2YXIoLS1ub3RlLWJnLWNvbG9yKSAhaW1wb3J0YW50O1xuXHQtLWJlZm9yZS1iZy1jb2xvcjogeWVsbG93ICFpbXBvcnRhbnQ7XG5cdC0tYmVmb3JlLWZnLWNvbG9yOiBibGFjayAhaW1wb3J0YW50O1xufVxuXG4vKlxuICogV0lQIEJhbm5lclxuICovXG5cblt3aXBdOjpiZWZvcmUge1xuXHRjb250ZW50OiBcIldPUksgSU4gUFJPR1JFU1NcIjtcblx0YmFja2dyb3VuZDogcmVwZWF0aW5nLWxpbmVhci1ncmFkaWVudCgtNTVkZWcsXG5cdFx0XHQjMDAwMDAwLCAjMDAwMDAwIDE1cHgsXG5cdFx0XHQjZTJkNTI5IDE1cHgsICNlMmQ1MjkgMzBweCk7XG5cdGRpc3BsYXk6IGJsb2NrO1xuXHR3aWR0aDogMTAwJTtcblx0Y29sb3I6IHdoaXRlO1xuXHRmb250LXdlaWdodDogYm9sZDtcblx0Zm9udC1mYW1pbHk6IHZhcigtLXNhbnMpO1xuXHRwYWRkaW5nOiAwLjVlbSAwO1xuXHR0ZXh0LWFsaWduOiBjZW50ZXI7XG5cdGJvcmRlci1yYWRpdXM6IDByZW0gMHJlbSAxcmVtIDFyZW07XG5cdHBvc2l0aW9uOiBzdGlja3k7XG5cdHRleHQtc2hhZG93OlxuXHRcdDFweCAxcHggMnB4IGJsYWNrLFxuXHRcdDFweCAtMXB4IDJweCBibGFjayxcblx0XHQtMXB4IDFweCAycHggYmxhY2ssXG5cdFx0LTFweCAtMXB4IDJweCBibGFjaztcblx0dG9wOiAyO1xufVxuIl19 */
+    /*
+     * General Settings
+     */
+
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+    @font-face {
+    	font-family: "cantvf";
+    	src: url('/assets/Cantarell-VF.woff2') format('woff2')
+    }
+
+    :root {
+    	--sans: "cantvf", "system-ui", "Verdana", "Tahoma", sans-serif;
+    	--title: var(sans);
+    	--mono: "Ubuntu Mono", "DejaVu Sans Mono", monospace;
+    	--red: darkred;
+    	--green: darkgreen;
+    	--blue: blue;
+    	--magenta: darkmagenta;
+    	--orange: darkorange;
+    	--yellow: darkgoldenrod;
+    	--pink: fuchsia;
+    	--code-block-bg: #0002;
+    }
+
+    @media (prefers-color-scheme: dark) {
+    	:root {
+    		--fg: white;
+    		--bg: #161616;
+    		--accent: #7744aa;
+    		--note-bg-color: #221;
+    		--info-bg-color: #252525;
+    		--warning-bg-color: #251010;
+    		--carrotssticks-bg-color: #251705;
+    	}
+    }
+
+    @media (prefers-color-scheme: light) {
+    	:root {
+    		--fg: black;
+    		--bg: white;
+    		--accent: rebeccapurple;
+    		--note-bg-color: #ffc;
+    		--info-bg-color: lightgray;
+    		--warning-bg-color: #fcc;
+    		--carrotssticks-bg-color: #ffefcc;
+    	}
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+    	font-family: var(--title)
+    }
+
+    a {
+    	word-wrap: break-word;
+    }
+
+    p {
+    	line-height: 1.25rem;
+    }
+
+    * {
+    	font-family: var(--sans);
+    	color: var(--fg);
+    	background-color: var(--bg);
+    }
+
+    h1,
+    h2 {
+    	font-weight: 800;
+    }
+
+    a {
+    	color: var(--accent);
+    }
+
+    h1 {
+    	font-size: 2.5rem;
+    	font-variation-settings: 'wght' 900;
+    }
+
+    /*
+     * Emojis
+     */
+
+    span.emoji {
+    	background-color: #0000;
+    	margin: 0;
+    	padding: 0;
+    }
+
+    /*
+     * Text Selection
+     */
+
+    *::selection {
+    	background-color: var(--accent);
+    	color: var(--bg);
+    }
+
+    /*
+     * Main and Footer Margin
+     */
+
+    body {
+    	margin: 0
+    }
+
+    .main-container {
+    	display: flex;
+    	flex-direction: column;
+    	width: 100%;
+    	align-items: center;
+    }
+
+    @media screen and (min-width: 800px) {
+    	main {
+    		width: 70rem;
+    	}
+    }
+
+    main>*,
+    footer {
+    	margin-left: 20%;
+    	margin-right: 20%;
+    }
+
+    @media screen and (max-width: 500px) {
+    	main {
+    		width: none;
+    	}
+
+    	main>*,
+    	footer {
+    		margin-left: 2%;
+    		margin-right: 2%;
+    	}
+    }
+
+    @media screen and (min-width: 501px) {
+
+    	pre:not([class]),
+    	div.sourceCode {
+    		margin-left: 15%;
+    		margin-right: 15%;
+    	}
+    }
+
+    nav,
+    nav * {
+        max-width: none
+    }
+
+    /* 
+     * Footer Color & Font Size
+     */
+
+    footer,
+    footer * {
+    	color: gray
+    }
+
+    footer {
+    	margin-top: 5rem;
+    	margin-bottom: 2rem;
+    	font-size: smaller;
+    }
+
+    footer * {
+    	font-size: inherit;
+    }
+
+    /*
+     * Navbar Layout & Styling
+     */
+
+    nav {
+    	padding: 1rem 2rem;
+    	margin: 0;
+    	margin-bottom: 1rem;
+    	display: flex;
+    	justify-content: space-between;
+    	border-top: 1px solid white;
+    	border-bottom: 2px solid var(--accent);
+    	/*filter: drop-shadow(0px 5px 10px #050505);*/
+    	position: sticky;
+    	top: 0;
+    	z-index: 0
+    }
+
+    nav a {
+    	color: var(--fg);
+    }
+
+    #self-link {
+    	font-weight: bold
+    }
+
+    .delim {
+    	color: gray;
+    	user-select: none;
+    }
+
+    /*
+     * Timestamp Styles
+     */
+
+    span.timestamp {
+    	margin-right: 0;
+
+    	&,
+    	* {
+    		padding: 0;
+    		background-color: #0000;
+    		color: gray;
+    		font-family: var(--mono)
+    	}
+    }
+
+    /*
+     * Blog Posts List
+     */
+
+    ul {
+    	&>li {
+    		list-style-type: "- ";
+
+    		&:has(span.ts, a) {
+    			color: var(--fg);
+    			list-style-type: "- ";
+    		}
+
+    		&:has(span.ts, a:hover) {
+    			color: var(--accent);
+    			list-style-type: "> ";
+    		}
+
+    		&::marker {
+    			font-family: var(--mono);
+    		}
+    	}
+    }
+
+    /*
+     * Blog Post Upper Links
+     */
+
+    .nav-links-container {
+    	display: flex;
+    	gap: 1rem;
+    }
+
+    /* This element is only supposed to show when CSS and JS are disabled */
+    noscript.hide {
+    	display: none;
+    }
+
+    /*
+     * Blog Post hr
+     */
+
+    main>hr {
+    	border: 0.5px solid #fff2;
+    	margin-top: 1rem;
+    }
+
+    /*
+     * Code Block Styling
+     */
+
+    code {
+    	background-color: var(--code-block-bg);
+    	font-family: var(--mono);
+    	padding: 1px 7px 2px 7px;
+    	border-radius: 5px;
+    }
+
+    pre {
+    	background-color: var(--code-block-bg);
+    	padding: 1rem;
+    	white-space: pre-wrap;
+    	border-radius: 0.5rem;
+    }
+
+    pre code {
+    	padding: 0;
+    }
+
+    pre * {
+    	margin: 0;
+    	font-family: var(--mono);
+    	background-color: #0000;
+    }
+
+    pre>code>span:first-child {
+    	margin-left: 0em
+    }
+
+    span.kw {
+    	color: var(--red);
+    	font-weight: bold
+    }
+
+    span.at {
+    	color: var(--magenta);
+    	font-weight: bold
+    }
+
+    span.dt {
+    	color: var(--blue)
+    }
+
+    span.fu {
+    	color: var(--yellow)
+    }
+
+    span.bu {
+    	color: var(--blue)
+    }
+
+    span.op {
+    	color: var(--red)
+    }
+
+    span.cf {
+    	color: var(--pink);
+    	font-weight: bold
+    }
+
+    span.co {
+    	color: gray;
+    }
+
+    span.an {
+    	color: var(--yellow);
+    	font-weight: bold
+    }
+
+    span.va {
+    	color: var(--fg);
+    	font-weight: bold
+    }
+
+    span.st {
+    	color: var(--green)
+    }
+
+    span.ss {
+    	color: var(--green)
+    }
+
+    span.sc {
+    	color: var(--green);
+    	font-weight: bold
+    }
+
+    span.ch {
+    	color: var(--magenta)
+    }
+
+    /*
+     * Styles for comments 
+     */
+
+
+    details {
+    	margin-top: 1rem;
+    }
+
+    summary {
+
+    	&,
+    	& * {
+    		cursor: pointer;
+    	}
+
+    	&::marker {
+    		display: inline;
+    	}
+
+    	& h2 {
+    		display: inline;
+    		font-size: 1.5em;
+    		margin: 0;
+    		margin-left: 0.5rem;
+    	}
+    }
+
+    div#disqus_thread {
+    	margin-top: 1rem;
+    }
+
+    /*
+     * Notes & Other Admonitions
+     */
+    div:not(:has(main))[class]:has(p) {
+    	/*
+    	 * Kind of Like a Class
+         	 */
+
+    	/*
+    	 * Variables
+         	 */
+    	--bg-color: var(--info-bg-color);
+    	--before-fg-color: white;
+    	--before-bg-color: gray;
+
+    	margin-top: 1rem;
+    	background-color: var(--bg-color);
+    	padding: 0.2rem 0.5rem;
+    	border-radius: 1rem;
+    	border: 0px solid #0000;
+    	cursor: help;
+
+    	& *:not(code) {
+    		color: var(--fg);
+    		background-color: #0000;
+    	}
+
+    	&>*:not(ul) {
+    		padding: 0.2rem 0.5rem;
+    	}
+
+    	&>ul {
+    		padding: 0.5rem 1.25rem;
+    	}
+
+    	&>div.sourceCode {
+    		padding: 0;
+    		margin: 0;
+
+    		&>pre {
+    			margin: 0;
+    		}
+    	}
+
+    	&:hover::before {
+    		margin-left: -2em;
+    	}
+
+    	&::before {
+    		font-style: normal;
+    		color: var(--before-fg-color);
+    		background-color: var(--before-bg-color);
+    		padding: 0.5rem;
+    		text-transform: capitalize;
+    		content: attr(class);
+    		margin-left: -1em;
+    		font-weight: bold;
+    		transition: margin-left 0.3s;
+    	}
+
+    	& *::selection {
+    		background-color: var(--before-bg-color);
+    		color: var(--before-fg-color);
+    	}
+
+    	&>p:first-child {
+    		display: none;
+    	}
+    }
+
+    div[class="carrots/sticks"]:has(p) {
+    	--before-bg-color: green !important;
+    	--before-bf-color: black !important;
+    	--bg-color: var(--carrotssticks-bg-color) !important;
+    }
+
+    div.warning:has(p) {
+    	--bg-color: var(--warning-bg-color) !important;
+    	--before-bg-color: red !important;
+    }
+
+    div.note:has(p),
+    div.disclaimer:has(p) {
+    	--bg-color: var(--note-bg-color) !important;
+    	--before-bg-color: yellow !important;
+    	--before-fg-color: black !important;
+    }
+
+    /*
+     * WIP Banner
+     */
+
+    [wip]::before {
+    	content: "WORK IN PROGRESS";
+    	background: repeating-linear-gradient(-55deg,
+    			#000000, #000000 15px,
+    			#e2d529 15px, #e2d529 30px);
+    	display: block;
+    	width: 100%;
+    	color: white;
+    	font-weight: bold;
+    	font-family: var(--sans);
+    	padding: 0.5em 0;
+    	text-align: center;
+    	border-radius: 0rem 0rem 1rem 1rem;
+    	position: sticky;
+    	text-shadow:
+    		1px 1px 2px black,
+    		1px -1px 2px black,
+    		-1px 1px 2px black,
+    		-1px -1px 2px black;
+    	top: 2;
+    }
 </style>
 <script>
-    document.querySelectorAll('div.sourceCode').map(a => { console.log(a) })
+    document.querySelectorAll('div.sourceCode').map(a => {console.log(a)})
 </script>
+
+</html>

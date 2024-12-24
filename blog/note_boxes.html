@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Note Boxes! - Ben Raz Blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body blogpost >
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0"></script>
+    <nav>
+        <a id="self-link" href="/">benraz.dev</a>
+        <div class="links-wrapper">
+            <a href="/about.html">about</a><span class="delim"> | </span><a href="/blog">blog</a><span class="delim"> | </span><a href="https://github.com/benraz123">github</a><span class="delim"> | </span><a href="https://crates.io/users/BenRaz123?sort=recent-updates">crates.io</a>
+        </div>
+    </nav>
+    <div class="main-container">
+        <main>
+            <div class="nav-links-container"><a href="/">&lt;&lt; home</a><noscript class="hide"> </noscript><a
+                    href="/blog">&lt; blog</a></div>
+            <h1>Note Boxes!</h1>
+            <span class="timestamp"><code>[Published 2024-12-24 09:35:00
+-05]</code></span><br>
+                        <hr>
+            <div class="note">
+            <p>NOTE:</p>
+            <p>What I am referring to as <em>note boxes</em> are also
+            referred to more generically as call-out boxes or
+            admonitions boxes. I have not seen it referred to as note
+            boxes before so I have taken it upon myself to contribute to
+            linguistic diversity<a href="#fn1" class="footnote-ref"
+            id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+            </div>
+            <p>I decided to write a shorter and more lighthearted blog
+            post after my heaver and significantly darker blog post on
+            foreign affairs (<a
+            href="/blog/trump_ukraine_nato.html">read it here</a>), my
+            topic, as the title suggests, is on note boxes, but not just
+            any note boxes, the ones on my website!</p>
+            <h2 id="demo">Demo</h2>
+            <p>The way that my blog works is that posts are written in
+            <a
+            href="https://en.wikipedia.org/wiki/Markdown">markdown</a>
+            and processed with <a href="https://pandoc.org/">pandoc</a>
+            into <a
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a>.
+            (For more information on this process read <a
+            href="/blog/website_process.html">this</a> blog post I
+            wrote.</p>
+            <p>Anyways, if I write markdown along the lines of this:</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>::: note</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Hello World</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div>
+            <p>It will evaluate to the following HTML:</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;note&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>NOTE:<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Hello World<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Which will render like this:</p>
+            <div class="note">
+            <p>NOTE:</p>
+            <p>Hello World</p>
+            </div>
+            <h2 id="the-markdown-side-of-things">The Markdown Side of
+            Things</h2>
+            <p>Now, <code>pandoc</code> interprets markdown in the
+            format as this:</p>
+            <pre><code>::: &lt;names&gt;
+&lt;content&gt;
+:::</code></pre>
+            <p>To mean HTML looking like this:</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;</span><span class="er">&lt;</span><span class="st">names&gt;&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">content</span><span class="dt">&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>The strengths of writing markdown like this is that it is
+            super easy to do and you don’t repeat yourself at all
+            (follows DRY). In other words, this type of markdown is very
+            elegant to write. The weaknesses of writing like this is of
+            course that by default and without
+            <code>css</code>/<code>js</code> this HTML displays exactly
+            the same as everything else.</p>
+            <h2 id="the-style-side-of-things">The Style Side of
+            Things</h2>
+            <p>If we wanted to add a yellow background color to all note
+            boxes, we would write the following <code>css</code>:</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.note</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">yellow</span><span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <!-- 
+            TODO: Make sure GH Link is valid 
+            -->
+            <div class="note">
+            <p>NOTE:</p>
+            <p>Realistically, that’s not all you would do to get a good
+            looking box but I want to keep the post simple. The actual
+            <code>css</code> for this site can be viewed at <a
+            href="https://github.com/BenRaz123/site/blob/main/styles.css">my
+            GitHub</a></p>
+            </div>
+            <p>Additionally, each note box has a little tag describing
+            it (e.g. “Note”, “Warning”, etc). In order to add this tag
+            without <code>js</code> we will write this code:</p>
+            <div class="sourceCode" id="cb6"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.note</span><span class="in">::before</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">content</span>: <span class="st">&quot;Note&quot;</span><span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-left</span>: <span class="dv">-1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>Since the first <code>&lt;p&gt;</code> element is now
+            redundant, we can remove it like this:</p>
+            <div class="sourceCode" id="cb7"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.note</span> <span class="op">&gt;</span> p<span class="in">:first-child</span> { <span class="kw">display</span>: <span class="dv">none</span> }</span></code></pre></div>
+            <p>This is nice because boxes will be legible without
+            <code>css</code> but will look nice with <code>css</code> as
+            well. And all of this without a single line of
+            JavaScript!.</p>
+            <h3 id="generalizing">Generalizing</h3>
+            <p>Now all of this is fine and dandy until we want to define
+            additional note boxes, like <code>Warning</code>,
+            <code>Info</code>, and etc<a href="#fn2"
+            class="footnote-ref" id="fnref2"
+            role="doc-noteref"><sup>2</sup></a>. As you can see with the
+            following <code>css</code>, the naive approach can get
+            annoying quickly:</p>
+            <div class="sourceCode" id="cb8"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"> * Notes</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.note</span> {</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">yellow</span><span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* ... */</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.note</span><span class="in">::before</span> {</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">content</span>: <span class="st">&quot;Note&quot;</span><span class="op">;</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-left</span>: <span class="dv">-1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* ... */</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.note</span> <span class="op">&gt;</span> p<span class="in">:first-child</span> { <span class="kw">display</span>: <span class="dv">none</span><span class="op">;</span> }</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"> * Warning</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.warning</span> {</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* ... */</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.warning</span><span class="in">::before</span> {</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">content</span>: <span class="st">&quot;Warning&quot;</span><span class="op">;</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-left</span>: <span class="dv">-1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* ... */</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.warning</span> <span class="op">&gt;</span> p<span class="in">:first-child</span> { <span class="kw">display</span>: <span class="dv">none</span><span class="op">;</span> }</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="co"> * Info</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.info</span> {</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">gray</span><span class="op">;</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* ... */</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.info</span><span class="in">::before</span> {</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">content</span>: <span class="st">&quot;Info&quot;</span><span class="op">;</span></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-left</span>: <span class="dv">-1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* ... */</span></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.info</span> <span class="op">&gt;</span> p<span class="in">:first-child</span> { <span class="kw">display</span>: <span class="dv">none</span><span class="op">;</span> }</span></code></pre></div>
+            <p>Even if we use CSS nesting, this code looks no
+            prettier:</p>
+            <div class="sourceCode" id="cb9"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.note</span> {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">yellow</span><span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* ... */</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    &amp; <span class="in">::before</span> {</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">content</span>: <span class="st">&quot;Note&quot;</span><span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">margin-left</span>: <span class="dv">-1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">/* ... */</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    &amp; <span class="op">&gt;</span> p:first-child {</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        display: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.warning</span> {</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* ... */</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    &amp; <span class="in">::before</span> {</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        <span class="kw">content</span>: <span class="st">&quot;Warning&quot;</span><span class="op">;</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">margin-left</span>: <span class="dv">-1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>        <span class="co">/* ... */</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    &amp; <span class="op">&gt;</span> p:first-child {</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        display: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.info</span>{</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">gray</span><span class="op">;</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* ... */</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    &amp; <span class="in">::before</span> {</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>        <span class="kw">content</span>: <span class="st">&quot;Info&quot;</span><span class="op">;</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>        <span class="kw">margin-left</span>: <span class="dv">-1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        <span class="co">/* ... */</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>    &amp; <span class="op">&gt;</span> p:first-child {</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>        display: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>Additionally, we should be able to accommodate much more
+            boxes, like <code>Hint</code>, <code>Disclaimer</code><a
+            href="#fn3" class="footnote-ref" id="fnref3"
+            role="doc-noteref"><sup>3</sup></a>, and so on. And we
+            should have a default box as any box that isn’t covered in
+            the CSS simply isn’t styled. The solution to this is to stop
+            repeating ourselves and to generalize. We can do this by
+            using the <code>[class]</code> selector and the
+            <code>attr()</code> function to abstract over class:</p>
+            <div class="sourceCode" id="cb10"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>div<span class="ex">[class]</span> {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">gray</span><span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* ... */</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    &amp; <span class="in">::before</span> {</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">content</span>: <span class="fu">attr(</span>class<span class="fu">)</span><span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">text-transform</span>: <span class="dv">capitalize</span><span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">margin-left</span>: <span class="dv">-1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">/* ... */</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    &amp; <span class="op">&gt;</span> p:first-child {</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        display: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>This is the generic solution, which covers all possible
+            classes. From here we can define specific cases (this is
+            because the <code>div.&lt;class&gt;</code> selector is more
+            specific than the <code>div[class]</code> selector):</p>
+            <div class="sourceCode" id="cb11"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.note</span> {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">yellow</span><span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>div<span class="fu">.warning</span> {</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>And so thus, our — one could say Object Oriented — CSS
+            solution manages to solve the problem of code duplication by
+            creating a default and implementation and “classes” that
+            override this implementation.</p>
+            <h2 id="the-pandoc-side-of-things">The <code>Pandoc</code>
+            Side of Things</h2>
+            <p>Now, the avid readers will wonder where the
+            <code>NOTE:</code> is added in the build process. This is
+            something done note with Python (build script), JavaScript,
+            or CSS. This is actually done via a <code>pandoc</code>
+            filter written using <code>lua</code> (filters are invoked
+            using <code>pandoc --lua-filter &lt;file&gt;</code>). The
+            filter takes a</p>
+            <div class="sourceCode" id="cb12"><pre
+            class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>::: <span class="dt">&lt;</span><span class="kw">text</span><span class="dt">&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">content</span><span class="dt">&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div>
+            <p>and transforms it into</p>
+            <div class="sourceCode" id="cb13"><pre
+            class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>::: <span class="dt">&lt;</span><span class="kw">text</span><span class="dt">&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">TEXT</span><span class="dt">&gt;</span>:</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">content</span><span class="dt">&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div>
+            <p>Here is the code for the filter:</p>
+            <div class="sourceCode" id="cb14"><pre
+            class="sourceCode lua"><code class="sourceCode lua"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> Div<span class="op">(</span><span class="va">el</span><span class="op">)</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">#</span><span class="va">el</span><span class="op">.</span><span class="va">classes</span> <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">then</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">local</span> <span class="va">some_word</span> <span class="op">=</span> <span class="va">el</span><span class="op">.</span><span class="va">classes</span><span class="op">[</span><span class="dv">1</span><span class="op">]</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">local</span> <span class="va">capitalized_word</span> <span class="op">=</span> <span class="fu">string.upper</span><span class="op">(</span><span class="va">some_word</span><span class="op">)</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">local</span> <span class="va">capitalized_intro</span> <span class="op">=</span> <span class="va">pandoc</span><span class="op">.</span>Para<span class="op">({</span><span class="va">pandoc</span><span class="op">.</span>Str<span class="op">(</span><span class="va">capitalized_word</span> <span class="op">..</span> <span class="st">&quot;:&quot;</span><span class="op">)})</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">table.insert</span><span class="op">(</span><span class="va">el</span><span class="op">.</span><span class="va">content</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="va">capitalized_intro</span><span class="op">)</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">el</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+            <p>This filter checks for a div element with a non-zero
+            amount of classes, and appends the class name to the content
+            in uppercase.</p>
+            <aside id="footnotes"
+            class="footnotes footnotes-end-of-document"
+            role="doc-endnotes">
+            <hr />
+            <ol>
+            <li id="fn1"><p>Or, for the cynical, linguistic
+            fragmentation<a href="#fnref1" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn2"><p>I even defined a <code>Carrots/Sticks</code>
+            box! (Used <a
+            href="/blog/trump_ukraine_nato.html#the-new-strategy">on
+            this blog post about geopolitics</a><a href="#fnref2"
+            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn3"><p>… and <code>Carrots/Sticks</code> of course
+            ;)<a href="#fnref3" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            </ol>
+            </aside>
+            <hr>
+            <details class="comments">
+                <summary>
+                    <h2>Comments (Disqus)</h2>
+                </summary>
+                <div id="disqus_thread"></div>
+            </details>
+            <details class="comments">
+                <summary>
+                    <h2>Comments (Facebook)</h2>
+                </summary>
+                <div class="fb-comments" data-href="https://benraz.dev/blog/note_boxes.html" data-width="" data-numposts="10"></div>
+            </details>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function () { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://benrazdev.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered
+                    by Disqus.</a></noscript>
+            </details>
+            <footer>
+                All content is licensed under the MIT license unless otherwise posted. (Ben Raz <span id="year-update">2024</span>)
+                <script>
+                    document.querySelector("#year-update").innerHTML = new Date().getFullYear()
+                </script>
+            </footer>
+        </main>
+    </div>
+</body>
+<style>
+    /*
+     * General Settings
+     */
+
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+    @font-face {
+    	font-family: "cantvf";
+    	src: url('/assets/Cantarell-VF.woff2') format('woff2')
+    }
+
+    :root {
+    	--sans: "cantvf", "system-ui", "Verdana", "Tahoma", sans-serif;
+    	--title: var(sans);
+    	--mono: "Ubuntu Mono", "DejaVu Sans Mono", monospace;
+    	--red: darkred;
+    	--green: darkgreen;
+    	--blue: blue;
+    	--magenta: darkmagenta;
+    	--orange: darkorange;
+    	--yellow: darkgoldenrod;
+    	--pink: fuchsia;
+    	--code-block-bg: #0002;
+    }
+
+    @media (prefers-color-scheme: dark) {
+    	:root {
+    		--fg: white;
+    		--bg: #161616;
+    		--accent: #7744aa;
+    		--note-bg-color: #221;
+    		--info-bg-color: #252525;
+    		--warning-bg-color: #251010;
+    		--carrotssticks-bg-color: #251705;
+    	}
+    }
+
+    @media (prefers-color-scheme: light) {
+    	:root {
+    		--fg: black;
+    		--bg: white;
+    		--accent: rebeccapurple;
+    		--note-bg-color: #ffc;
+    		--info-bg-color: lightgray;
+    		--warning-bg-color: #fcc;
+    		--carrotssticks-bg-color: #ffefcc;
+    	}
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+    	font-family: var(--title)
+    }
+
+    a {
+    	word-wrap: break-word;
+    }
+
+    p {
+    	line-height: 1.25rem;
+    }
+
+    * {
+    	font-family: var(--sans);
+    	color: var(--fg);
+    	background-color: var(--bg);
+    }
+
+    h1,
+    h2 {
+    	font-weight: 800;
+    }
+
+    a {
+    	color: var(--accent);
+    }
+
+    h1 {
+    	font-size: 2.5rem;
+    	font-variation-settings: 'wght' 900;
+    }
+
+    /*
+     * Emojis
+     */
+
+    span.emoji {
+    	background-color: #0000;
+    	margin: 0;
+    	padding: 0;
+    }
+
+    /*
+     * Text Selection
+     */
+
+    *::selection {
+    	background-color: var(--accent);
+    	color: var(--bg);
+    }
+
+    /*
+     * Main and Footer Margin
+     */
+
+    body {
+    	margin: 0
+    }
+
+    .main-container {
+    	display: flex;
+    	flex-direction: column;
+    	width: 100%;
+    	align-items: center;
+    }
+
+    @media screen and (min-width: 800px) {
+    	main {
+    		width: 70rem;
+    	}
+    }
+
+    main>*,
+    footer {
+    	margin-left: 20%;
+    	margin-right: 20%;
+    }
+
+    @media screen and (max-width: 500px) {
+    	main {
+    		width: none;
+    	}
+
+    	main>*,
+    	footer {
+    		margin-left: 2%;
+    		margin-right: 2%;
+    	}
+    }
+
+    @media screen and (min-width: 501px) {
+
+    	pre:not([class]),
+    	div.sourceCode {
+    		margin-left: 15%;
+    		margin-right: 15%;
+    	}
+    }
+
+    nav,
+    nav * {
+        max-width: none
+    }
+
+    /* 
+     * Footer Color & Font Size
+     */
+
+    footer,
+    footer * {
+    	color: gray
+    }
+
+    footer {
+    	margin-top: 5rem;
+    	margin-bottom: 2rem;
+    	font-size: smaller;
+    }
+
+    footer * {
+    	font-size: inherit;
+    }
+
+    /*
+     * Navbar Layout & Styling
+     */
+
+    nav {
+    	padding: 1rem 2rem;
+    	margin: 0;
+    	margin-bottom: 1rem;
+    	display: flex;
+    	justify-content: space-between;
+    	border-top: 1px solid white;
+    	border-bottom: 2px solid var(--accent);
+    	/*filter: drop-shadow(0px 5px 10px #050505);*/
+    	position: sticky;
+    	top: 0;
+    	z-index: 0
+    }
+
+    nav a {
+    	color: var(--fg);
+    }
+
+    #self-link {
+    	font-weight: bold
+    }
+
+    .delim {
+    	color: gray;
+    	user-select: none;
+    }
+
+    /*
+     * Timestamp Styles
+     */
+
+    span.timestamp {
+    	margin-right: 0;
+
+    	&,
+    	* {
+    		padding: 0;
+    		background-color: #0000;
+    		color: gray;
+    		font-family: var(--mono)
+    	}
+    }
+
+    /*
+     * Blog Posts List
+     */
+
+    ul {
+    	&>li {
+    		list-style-type: "- ";
+
+    		&:has(span.ts, a) {
+    			color: var(--fg);
+    			list-style-type: "- ";
+    		}
+
+    		&:has(span.ts, a:hover) {
+    			color: var(--accent);
+    			list-style-type: "> ";
+    		}
+
+    		&::marker {
+    			font-family: var(--mono);
+    		}
+    	}
+    }
+
+    /*
+     * Blog Post Upper Links
+     */
+
+    .nav-links-container {
+    	display: flex;
+    	gap: 1rem;
+    }
+
+    /* This element is only supposed to show when CSS and JS are disabled */
+    noscript.hide {
+    	display: none;
+    }
+
+    /*
+     * Blog Post hr
+     */
+
+    main>hr {
+    	border: 0.5px solid #fff2;
+    	margin-top: 1rem;
+    }
+
+    /*
+     * Code Block Styling
+     */
+
+    code {
+    	background-color: var(--code-block-bg);
+    	font-family: var(--mono);
+    	padding: 1px 7px 2px 7px;
+    	border-radius: 5px;
+    }
+
+    pre {
+    	background-color: var(--code-block-bg);
+    	padding: 1rem;
+    	white-space: pre-wrap;
+    	border-radius: 0.5rem;
+    }
+
+    pre code {
+    	padding: 0;
+    }
+
+    pre * {
+    	margin: 0;
+    	font-family: var(--mono);
+    	background-color: #0000;
+    }
+
+    pre>code>span:first-child {
+    	margin-left: 0em
+    }
+
+    span.kw {
+    	color: var(--red);
+    	font-weight: bold
+    }
+
+    span.at {
+    	color: var(--magenta);
+    	font-weight: bold
+    }
+
+    span.dt {
+    	color: var(--blue)
+    }
+
+    span.fu {
+    	color: var(--yellow)
+    }
+
+    span.bu {
+    	color: var(--blue)
+    }
+
+    span.op {
+    	color: var(--red)
+    }
+
+    span.cf {
+    	color: var(--pink);
+    	font-weight: bold
+    }
+
+    span.co {
+    	color: gray;
+    }
+
+    span.an {
+    	color: var(--yellow);
+    	font-weight: bold
+    }
+
+    span.va {
+    	color: var(--fg);
+    	font-weight: bold
+    }
+
+    span.st {
+    	color: var(--green)
+    }
+
+    span.ss {
+    	color: var(--green)
+    }
+
+    span.sc {
+    	color: var(--green);
+    	font-weight: bold
+    }
+
+    span.ch {
+    	color: var(--magenta)
+    }
+
+    /*
+     * Styles for comments 
+     */
+
+
+    details {
+    	margin-top: 1rem;
+    }
+
+    summary {
+
+    	&,
+    	& * {
+    		cursor: pointer;
+    	}
+
+    	&::marker {
+    		display: inline;
+    	}
+
+    	& h2 {
+    		display: inline;
+    		font-size: 1.5em;
+    		margin: 0;
+    		margin-left: 0.5rem;
+    	}
+    }
+
+    div#disqus_thread {
+    	margin-top: 1rem;
+    }
+
+    /*
+     * Notes & Other Admonitions
+     */
+    div:not(:has(main))[class]:has(p) {
+    	/*
+    	 * Kind of Like a Class
+         	 */
+
+    	/*
+    	 * Variables
+         	 */
+    	--bg-color: var(--info-bg-color);
+    	--before-fg-color: white;
+    	--before-bg-color: gray;
+
+    	margin-top: 1rem;
+    	background-color: var(--bg-color);
+    	padding: 0.2rem 0.5rem;
+    	border-radius: 1rem;
+    	border: 0px solid #0000;
+    	cursor: help;
+
+    	& *:not(code) {
+    		color: var(--fg);
+    		background-color: #0000;
+    	}
+
+    	&>*:not(ul) {
+    		padding: 0.2rem 0.5rem;
+    	}
+
+    	&>ul {
+    		padding: 0.5rem 1.25rem;
+    	}
+
+    	&>div.sourceCode {
+    		padding: 0;
+    		margin: 0;
+
+    		&>pre {
+    			margin: 0;
+    		}
+    	}
+
+    	&:hover::before {
+    		margin-left: -2em;
+    	}
+
+    	&::before {
+    		font-style: normal;
+    		color: var(--before-fg-color);
+    		background-color: var(--before-bg-color);
+    		padding: 0.5rem;
+    		text-transform: capitalize;
+    		content: attr(class);
+    		margin-left: -1em;
+    		font-weight: bold;
+    		transition: margin-left 0.3s;
+    	}
+
+    	& *::selection {
+    		background-color: var(--before-bg-color);
+    		color: var(--before-fg-color);
+    	}
+
+    	&>p:first-child {
+    		display: none;
+    	}
+    }
+
+    div[class="carrots/sticks"]:has(p) {
+    	--before-bg-color: green !important;
+    	--before-bf-color: black !important;
+    	--bg-color: var(--carrotssticks-bg-color) !important;
+    }
+
+    div.warning:has(p) {
+    	--bg-color: var(--warning-bg-color) !important;
+    	--before-bg-color: red !important;
+    }
+
+    div.note:has(p),
+    div.disclaimer:has(p) {
+    	--bg-color: var(--note-bg-color) !important;
+    	--before-bg-color: yellow !important;
+    	--before-fg-color: black !important;
+    }
+
+    /*
+     * WIP Banner
+     */
+
+    [wip]::before {
+    	content: "WORK IN PROGRESS";
+    	background: repeating-linear-gradient(-55deg,
+    			#000000, #000000 15px,
+    			#e2d529 15px, #e2d529 30px);
+    	display: block;
+    	width: 100%;
+    	color: white;
+    	font-weight: bold;
+    	font-family: var(--sans);
+    	padding: 0.5em 0;
+    	text-align: center;
+    	border-radius: 0rem 0rem 1rem 1rem;
+    	position: sticky;
+    	text-shadow:
+    		1px 1px 2px black,
+    		1px -1px 2px black,
+    		-1px 1px 2px black,
+    		-1px -1px 2px black;
+    	top: 2;
+    }
+</style>
+<script>
+    document.querySelectorAll('div.sourceCode').map(a => {console.log(a)})
+</script>
+
+</html>
