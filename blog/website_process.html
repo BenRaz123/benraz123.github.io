@@ -60,12 +60,12 @@
                     </div>
                 </dialog>
             </div>
-            <h1>The Process of Building This Website</h1>
-            <span class="timestamp"><code>[Published 2024-10-30 17:00:00
--04]</code></span><br>
-                        <span class="timestamp"><code>[Updated 2024-11-1
-11:25:00 -04]</code></span>
-                        <hr>
+	    <hgroup>
+	    <h1>The Process of Building This Website</h1>
+            <span>Published 2024-10-30 17:00:00 -04</span><br>
+                        <span>Updated 2024-11-1 11:25:00 -04</span>
+            	    </hgroup>
+            <hr>
             <div data-box="info">
             <p>INFO:</p>
             <p>The source for this website can be found on my Github at
@@ -297,7 +297,8 @@
         :root {
             --fg: white;
             --bg: #161616;
-            --accent: #bb99ff;
+            /*--accent: #bb99ff;*/;
+            --accent: #5f9;
             --note-bg-color: #221;
             --info-bg-color: #252525;
             --warning-bg-color: #251010;
@@ -551,7 +552,7 @@
     ul.blogposts {
         display: grid;
         padding: 0;
-        gap: 0.25rem;
+        gap: 0.5rem;
        
         &>li {
             list-style-type: none;
@@ -569,6 +570,16 @@
             &>a {
                 font-weight: 700;
             }
+        }
+        &>li#random-post {
+    	display: flex;
+    	align-items: center;
+    	justify-content: center;
+    	border: 2px dashed var(--blogposts-bg);
+    	&:has(a:hover) {
+    	    border: 2px solid var(--accent);
+    	    transition: border 0.4s;
+    	}
         }
     }
 
@@ -709,7 +720,8 @@
             transition: background-color 0.3s;
 
             &:hover {
-                background-color: #6392;
+                background-color: var(--accent);
+                color: var(--bg);
             }
 
             &>form {
@@ -718,6 +730,7 @@
                 flex-direction: row;
                 align-items: center;
                 justify-content: center;
+                color:inherit;
 
                 &>button {
                     color: inherit;

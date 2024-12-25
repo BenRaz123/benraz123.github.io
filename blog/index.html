@@ -30,7 +30,22 @@ class="timestamp">December 2024</span>
 <a href='/blog/website_process.html'>The Process of Building This
 Website</a> <span class="timestamp">October 2024</span>
 </li>
-</ul><footer>
+</ul>
+<script>
+function choose(choices) {
+var index = Math.floor(Math.random() * choices.length);
+return choices[index];
+}
+let list = document.querySelectorAll('ul')[0];
+let randomPost = choose(['/blog/website_process.html', '/blog/trump_ukraine_nato.html', '/blog/note_boxes.html']);
+let randomPostElem = document.createElement('li');
+randomPostElem.setAttribute("id", "random-post");
+let link = document.createElement("a");
+link.setAttribute("href", randomPost);
+link.innerHTML = "Random Post";
+randomPostElem.appendChild(link);
+list.appendChild(randomPostElem);
+</script><footer>
     All content is licensed under the MIT license unless otherwise posted. (Ben Raz <span id="year-update">2024</span>)
     <script>
         document.querySelector("#year-update").innerHTML = new Date().getFullYear()
@@ -67,7 +82,8 @@ Website</a> <span class="timestamp">October 2024</span>
     :root {
         --fg: white;
         --bg: #161616;
-        --accent: #bb99ff;
+        /*--accent: #bb99ff;*/;
+        --accent: #5f9;
         --note-bg-color: #221;
         --info-bg-color: #252525;
         --warning-bg-color: #251010;
@@ -321,7 +337,7 @@ span.timestamp {
 ul.blogposts {
     display: grid;
     padding: 0;
-    gap: 0.25rem;
+    gap: 0.5rem;
    
     &>li {
         list-style-type: none;
@@ -339,6 +355,16 @@ ul.blogposts {
         &>a {
             font-weight: 700;
         }
+    }
+    &>li#random-post {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px dashed var(--blogposts-bg);
+	&:has(a:hover) {
+	    border: 2px solid var(--accent);
+	    transition: border 0.4s;
+	}
     }
 }
 
@@ -479,7 +505,8 @@ dialog {
         transition: background-color 0.3s;
 
         &:hover {
-            background-color: #6392;
+            background-color: var(--accent);
+            color: var(--bg);
         }
 
         &>form {
@@ -488,6 +515,7 @@ dialog {
             flex-direction: row;
             align-items: center;
             justify-content: center;
+            color:inherit;
 
             &>button {
                 color: inherit;
