@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Ben Raz Blog</title><link>https://benraz.dev/blog</link><description>My beautiful blog, delivered to you with next-generation RSS technology</description><pubDate>Tue, 24 Dec 2024 22:13:45 +0000</pubDate><item><title>Note Boxes!</title><link>https://benraz.dev/blog/note_boxes.html</link><description><div class="note">
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Ben Raz Blog</title><link>https://benraz.dev/blog</link><description>My beautiful blog, delivered to you with next-generation RSS technology</description><pubDate>Wed, 25 Dec 2024 13:31:14 +0000</pubDate><item><title>Note Boxes!</title><link>https://benraz.dev/blog/note_boxes.html</link><description><div data-box="note">
 <p>NOTE:</p>
 <p>What I am referring to as <em>note boxes</em> are also referred to
 more generically as call-out boxes or admonitions boxes. I have not seen
@@ -30,7 +30,7 @@ class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Hello World<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
 <p>Which will render like this:</p>
-<div class="note">
+<div data-box="note">
 <p>NOTE:</p>
 <p>Hello World</p>
 </div>
@@ -61,7 +61,7 @@ class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#c
 <!-- 
 TODO: Make sure GH Link is valid 
 -->
-<div class="note">
+<div data-box="note">
 <p>NOTE:</p>
 <p>Realistically, that’s not all you would do to get a good looking box
 but I want to keep the post simple. The actual <code>css</code> for this
@@ -267,7 +267,7 @@ role="doc-backlink">↩︎</a></p></li>
 href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </aside>
-</description><pubDate>Tue, 24 Dec 2024 09:35:00 +0000</pubdate></item> <item><title>What is Trump's Policy on NATO & Ukraine?</title><link>https://benraz.dev/blog/trump_ukraine_nato.html</link><description><div class="disclaimer">
+</description><pubDate>Tue, 24 Dec 2024 09:35:00 +0000</pubdate></item> <item><title>What is Trump's Policy on NATO & Ukraine?</title><link>https://benraz.dev/blog/trump_ukraine_nato.html</link><description><div data-box="disclaimer">
 <p>DISCLAIMER:</p>
 <p>This will be as close as possible to an objective analysis of
 geopolitics. My goal is not to make a case for any particular politician
@@ -399,7 +399,7 @@ role="doc-noteref"><sup>6</sup></a> hints at some specifics. The methods
 for getting a deal expressed in the AFPI report are as follows, where
 carrots are rewards for compliance and sticks are punishments for
 noncompliance:</p>
-<div class="carrots/sticks">
+<div data-box="carrots/sticks">
 <p>CARROTS/STICKS:</p>
 <ul>
 <li>Russia <span class="emoji" data-emoji="ru">🇷🇺</span>
@@ -482,7 +482,7 @@ NATO is stronger when all the nations in it meet their 2% spending
 minimum. And most NATO members, frightened by the prospect of a Trump
 presidency have increased their spending in response. What if this is
 exactly what Trump wanted to happen?</p>
-<div class="note">
+<div data-box="note">
 <p>NOTE:</p>
 <p>Now, none of this is to endorse Trump or his foreign policy. I do not
 mean to suggest that Trump’s policies are the silver bullet to all the
@@ -526,7 +526,7 @@ class="uri">https://thehill.com/policy/defense/425938-bipartisan-senators-reintr
 href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </aside>
-</description><pubDate>Sat, 30 Nov 2024 12:04:00 +0000</pubdate></item> <item><title>The Process of Building This Website</title><link>https://benraz.dev/blog/website_process.html</link><description><div class="info">
+</description><pubDate>Sat, 30 Nov 2024 12:04:00 +0000</pubdate></item> <item><title>The Process of Building This Website</title><link>https://benraz.dev/blog/website_process.html</link><description><div data-box="info">
 <p>INFO:</p>
 <p>The source for this website can be found on my Github at <a
 href="https://github.com/benraz123/site">this link</a>. This site is
@@ -652,7 +652,7 @@ wrote the boilerplate necessary for sorting a
 <p>I wrote a function next for getting all blog posts and building all
 of them. After a little <code>CSS</code>, it’s all done.</p>
 <h2 id="putting-it-all-together">Putting it all Together</h2>
-<div class="warning">
+<div data-box="warning">
 <p>WARNING:</p>
 <p>While effort was made to make the script generic, it still contains a
 lot of hardcoded values. Additionally, it is not well-written or tested
