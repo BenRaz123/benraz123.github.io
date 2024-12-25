@@ -17,15 +17,19 @@
 </nav>
 	<div class="main-container">
 		<main><h1 id="blog-rss">Blog <a href="/feed.rss">(RSS)</a></h1>
-<ul>
-<li><a href='/blog/note_boxes.html'>“Note Boxes!”</a> <span
-class="timestamp"><code>(December 2024)</code></span></li>
-<li><a href='/blog/trump_ukraine_nato.html'>“What is Trump’s Policy on
-NATO &amp; Ukraine?”</a> <span
-class="timestamp"><code>(November 2024)</code></span></li>
-<li><a href='/blog/website_process.html'>“The Process of Building This
-Website”</a> <span
-class="timestamp"><code>(October 2024)</code></span></li>
+<ul class="blogposts">
+<li>
+<a href='/blog/note_boxes.html'>Note Boxes!</a> <span
+class="timestamp">December 2024</span>
+</li>
+<li>
+<a href='/blog/trump_ukraine_nato.html'>What is Trump’s Policy on NATO
+&amp; Ukraine?</a> <span class="timestamp">November 2024</span>
+</li>
+<li>
+<a href='/blog/website_process.html'>The Process of Building This
+Website</a> <span class="timestamp">October 2024</span>
+</li>
 </ul><footer>
     All content is licensed under the MIT license unless otherwise posted. (Ben Raz <span id="year-update">2024</span>)
     <script>
@@ -63,11 +67,21 @@ class="timestamp"><code>(October 2024)</code></span></li>
     :root {
         --fg: white;
         --bg: #161616;
-        --accent: #7744aa;
+        --accent: #bb99ff;
         --note-bg-color: #221;
         --info-bg-color: #252525;
         --warning-bg-color: #251010;
         --carrotssticks-bg-color: #251705;
+        --blogposts-bg: #fff3;
+        --dialog-backdrop: #0005;
+        --dialog-list-initial-bg: #ffffff04;
+        --dialog-list-selected-bg: #ffffff12;
+        --dialog-list-internal-border: #fff2;
+        --dialog-shadow: black;
+        --dialog-border-color: #fff3;
+        --dialog-internal-border-color: #fff2;
+        --dialog-buttons-background-image: radial-gradient(ellipse at bottom center, #0000, #ffffff0a);
+        --nav-bg: #16161650;
     }
 }
 
@@ -80,6 +94,16 @@ class="timestamp"><code>(October 2024)</code></span></li>
         --info-bg-color: lightgray;
         --warning-bg-color: #fcc;
         --carrotssticks-bg-color: #ffefcc;
+        --blogposts-bg: #0003;
+        --dialog-backdrop: #fff5;
+        --dialog-list-initial-bg: #00000004;
+        --dialog-list-selected-bg: #00000012;
+        --dialog-list-internal-border: #0002;
+        --dialog-shadow: gray;
+        --dialog-border-color: #0006;
+        --dialog-internal-border-color: #0004;
+        --dialog-buttons-background-image: radial-gradient(ellipse at bottom center, #0000002e, #0000);
+        --nav-bg: #ffffff50;
     }
 }
 
@@ -179,6 +203,9 @@ footer {
         padding-left: 10px;
         padding-right: 10px;
     }
+    ul.blogposts {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -187,20 +214,36 @@ footer {
         gap: 1rem;
         align-items: center;
     }
+    ul.blogposts {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media screen and (min-width: 501px) {
-
+    ul.blogposts,
     pre:not([class]),
     div.sourceCode {
         margin-left: 15%;
         margin-right: 15%;
+    }
+    ul.blogposts {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    ul.blogposts {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
 nav,
 nav * {
     max-width: none
+}
+
+nav * {
+    background-color: #0000;
 }
 
 /* 
@@ -227,6 +270,8 @@ footer * {
  */
 
 nav {
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(10px);
     padding: 1rem 2rem;
     margin: 0;
     margin-bottom: 1rem;
@@ -265,13 +310,37 @@ span.timestamp {
         padding: 0;
         background-color: #0000;
         color: gray;
-        font-family: var(--mono)
+        /*font-family: var(--mono)*/
     }
 }
 
 /*
  * Blog Posts List
  */
+
+ul.blogposts {
+    display: grid;
+    padding: 0;
+    gap: 0.25rem;
+   
+    &>li {
+        list-style-type: none;
+        justify-content: space-between;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        border: 2px solid var(--blogposts-bg);
+        transition: border 0.4s;
+        &:has(a:hover) {
+            border: 2px solid var(--accent);
+        }
+        &>a {
+            font-weight: 700;
+        }
+    }
+}
 
 ul {
     &>li {
@@ -331,14 +400,14 @@ main>hr {
 dialog {
     border-radius: 1rem;
     width: 15rem;
-    border-color: #0006;
-    filter: drop-shadow(0 0 10px gray);
+    border-color: var(--dialog-border-color);
+    filter: drop-shadow(0 0 10px var(--dialog-shadow));
     border-width: 1px;
     padding: 0;
 
     &::backdrop {
         overflow: hidden;
-        background: #fff5;
+        background: var(--dialog-backdrop);
     }
 
     &>* {
@@ -374,10 +443,10 @@ dialog {
                 flex-direction: row;
                 justify-content: space-between;
                 transition: background-color 0.3s;
-                background-color: #00000004;
+                background-color: var(--dialog-list-initial-bg);
 
                 &:not(:first-child) {
-                    border-top: 1px solid #0002
+                    border-top: 1px solid var(--dialog-list-internal-border);
                 }
 
                 &:last-child {
@@ -391,7 +460,7 @@ dialog {
                 }
 
                 &:hover {
-                    background-color: #00000012;
+                    background-color: var(--dialog-list-selected-bg);
                 }
 
                 & * {
@@ -404,9 +473,9 @@ dialog {
 
     &>div.dialog-buttons {
         padding: 1rem;
-        border-top: solid 1px gray;
+        border-top: solid 1px var(--dialog-internal-border-color);
         cursor: pointer;
-        background-image: radial-gradient(ellipse at bottom center, #0000001e, #0000);
+        background-image: var(--dialog-buttons-background-image); 
         transition: background-color 0.3s;
 
         &:hover {
