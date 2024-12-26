@@ -32,14 +32,14 @@
         function removeNavbar() {
             for (const elem of document.querySelectorAll("nav")[0].children) {
                 if (elem.id != "nav-article-title") {
-                    elem.style.visibility = "hidden";
+                    elem.style.display = "none";
                 }
             }
         }
 
         function reenableNavbar() {
             for (const elem of document.querySelectorAll("nav")[0].children) {
-                elem.style.visibility = "";
+                elem.style.display = "";
             }
         }
 
@@ -52,14 +52,15 @@
                     const nav = document.querySelectorAll("nav")[0];
                     if (window.scrollY > header.offsetTop + header.offsetHeight) {
                         removeNavbar();
-                        document.querySelector("#nav-article-title").innerHTML = document.querySelectorAll("h1")[0].innerHTML;
+                        document.querySelector("#nav-article-title").innerHTML = `<a href="/"><img src="/assets/pfp.png"/></a><span> / ${document.querySelectorAll("h1")[0].innerHTML}</span>`;
                         nav.style.justifyContent = "center";
+                        nav.style.borderBottomColor = "var(--accent)";
                     }
                     if (window.scrollY < header.offsetTop + header.offsetHeight) {
                         reenableNavbar();
                         document.querySelector("#nav-article-title").innerHTML = ""
                         nav.style.justifyContent = "space-between";
-                        nav.style.height = "auto";
+                        nav.style.borderBottomColor = "";
                     }
                 });
             }
@@ -605,11 +606,7 @@
     	}
     }
 
-    #nav-article-title {
-    	position: absolute;
-    	left: 50%;
-    	transform: translateX(-50%);
-    }
+
 
     header {
     	font-weight: 700;
@@ -648,6 +645,21 @@
     	#self-link>img {
     		height: 3rem;
     	}
+
+    	#nav-article-title img {
+    		height: 2.5rem;
+    	}
+
+    	#nav-article-title {
+    		display: flex;
+    		flex-direction: row;
+    		align-items: center;
+    		justify-content: center;
+    		gap: 7px;
+    		& > span {
+    			transform: translateY(-2px);
+    		}
+    	}
     }
 
     @media screen and (min-width: 500px) {
@@ -666,6 +678,24 @@
     	#self-link>img {
     		height: 1.5rem;
     		width: auto;
+    	}
+    }
+
+    @media screen and (min-width: 900) {
+    	#nav-article-title {
+    		position: absolute;
+    		left: 50%;
+    		transform: translateX(-50%);
+    		width: 100%;
+    	}
+    }
+
+    @media screen and (max-width: 900) {
+    	#nav-article-title {
+    		display: flex;
+    		flex-direction: row;
+    		align-items: center;
+    		justify-content: center;
     	}
     }
 
