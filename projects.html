@@ -2,16 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>The Process of Building This Website - Ben Raz Blog</title>
+    <title>Projects - Ben Raz</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 
-<body blogpost >
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous"
-        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0"></script>
+<body >
     <nav>
         <a id="self-link" href="/">
             <img src="/assets/pfp.png" />
@@ -83,244 +80,17 @@
     </script>
     <div class="main-container">
         <main>
-            <div class="nav-links-container-container">
-                <div class="nav-links-container">
-                    <a href="/">&lt;&lt; home</a><noscript class="hide">
-                    </noscript>
-                    <a href="/blog">&lt; blog</a>
-                </div>
-                <!--
-                <div class="share-links-container">
-                    <select id="share-links" onchange="location=this.value">
-                        <option value="#" hidden disabled selected>Share &gt;&gt;</option>
-                        <optgroup label="Twitter & Co">
-                            <option value="https://x.com/intent/post?url=https://benraz.dev/blog/website_process.html">X (Twitter) &gt;&gt;</option>
-                            <option value="https://bsky.app/intent/compose?text=https://benraz.dev/blog/website_process.html">Bluesky &gt;&gt;</option>
-                            <option value="https://mastodonshare.com/?url=https://benraz.dev/blog/website_process.html">Mastodon &gt;&gt;</option>
-                        </optgroup>
-                        <optgroup label="misc">
-                            <option value="https://www.facebook.com/sharer/sharer.php?u=https://benraz.dev/blog/website_process.html">FaceBook&gt;&gt;</option>
-                        </optgroup>
-                    </select>
-                </div>
-                -->
-                <a onclick="document.querySelector('#share').showModal()" href="#">share &gt;&gt;</a>
-                <dialog id="share">
-                    <div class="dialog-content">
-                        <header>Select a Platform</header>
-                        <ul>
-                            <a target="_blank" onclick="document.querySelector('#share').close()" href="https://x.com/intent/post?url=https://benraz.dev/blog/website_process.html"><li>X (Twitter)</li></a>
-                            <a target="_blank" onclick="document.querySelector('#share').close()" href="https://bsky.app/intent/compose?text=https://benraz.dev/blog/website_process.html"><li>Bluesky</li></a>
-                            <a target="_blank" onclick="document.querySelector('#share').close()" href="https://mastodonshare.com/?url=https://benraz.dev/blog/website_process.html"><li>Mastodon</li></a>
-                            <a target="_blank" onclick="document.querySelector('#share').close()" href="https://www.facebook.com/sharer/sharer.php?u=https://benraz.dev/blog/website_process.html"><li>FaceBook</li></a>
-                            <a target="_blank" onclick="document.querySelector('#share').close()" href="https://news.ycombinator.com/submitlink?u=https://benraz.dev/blog/website_process.html"><li>Hacker News</li></a>
-                        </ul>
-                    </div>
-                    <div class="dialog-buttons" onclick="document.querySelector('#share').close();">
-                        <form method="dialog">
-                            <button type="submit">Close</button>
-                        </form>
-                    </div>
-                </dialog>
-            </div>
-	    <hgroup id="blogheaders">
-	    <h1>The Process of Building This Website</h1>
-            <span>Published 2024-10-30 17:00:00 -04</span><br>
-                        <span>Updated 2024-11-1 11:25:00 -04</span>
-            	    </hgroup>
-            <hr>
-            <div data-box="info">
-            <p>INFO:</p>
-            <p>The source for this website can be found on my Github at
-            <a href="https://github.com/benraz123/site">this link</a>.
-            This site is hosted at <a
-            href="https://github.com/benraz123/benraz123.github.io">this
-            link</a>.</p>
-            </div>
-            <p>Welcome again to my brand-new website! I hope it doesn’t
-            look too terrible. I wanted to, in an act of supreme
-            originality, dedicate my first blog post to documenting the
-            process used to conjure up this website, READMEs be
-            damned.</p>
-            <h2 id="the-original-idea">The Original Idea</h2>
-            <p>My primary goal with this project was to build a
-            low-effort text-oriented website. In order to make the
-            hosting simple (I am using Github Pages here), a static
-            output directory was needed. Additionally, creating an RSS
-            feed was another goal, as while clearly the vast majority of
-            people disagree with me, RSS feeds provide a superior
-            user-experience. Why go to one website after another when
-            you can see them all in one uniform, customisable reader
-            that can be used offline and/or the terminal (yes, I know
-            command-line browsers exist, but they are unusable for
-            pretty much every single modern website). Now, I could have
-            all of this by just writing HTML by hand, but where’s the
-            fun in that? I’m a developer after all, which means I am
-            dangerously addicted to Markdown (and sometimes orgmode). So
-            my website’s content should be written in markdown and
-            converted to html.</p>
-            <h2 id="how-to-do-it">How to do it</h2>
-            <p>We are in luck, as it turns out. Not only was Markdown
-            written <em>for the purpose of</em> being converted to HTML,
-            many converters from Markdown to HTML exist. The best of
-            them in my experience is <a
-            href="https://pandoc.org"><code>pandoc</code></a>.
-            <code>pandoc</code> allows not just for converting markdown
-            to html but also using templates. This is where the fun
-            begins.</p>
-            <h3 id="a-basic-pandoc-template">A Basic <code>Pandoc</code>
-            Template</h3>
-            <p>A basic <code>pandoc</code> template would look like
-            this:</p>
-            <div class="sourceCode" id="cb1"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>$title$<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    Author: $author$</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">hr</span><span class="dt">&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    $content$</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
-            <p>If we write the following markdown:</p>
-            <div class="sourceCode" id="cb2"><pre
-            class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Hello World</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> Albert Einstein</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>This is a very simple thing.</span></code></pre></div>
-            <p>We could build it with the following command:</p>
-            <pre><code>pandoc in.md -o out.html --template template.html</code></pre>
-            <p>This would produce the following document:</p>
-            <div class="sourceCode" id="cb4"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Hello World<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Author: Albert Einstein<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">hr</span><span class="dt">&gt;</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>This is a very simple thing<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
-            <p>This allows for us to use a sort of component system. For
-            example, instead of writing the same navigation bar for two
-            different templates, I can just parameterize the navigation
-            bar. In my template file, I write this:</p>
-            <div class="sourceCode" id="cb5"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>$navbar$</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>...</span></code></pre></div>
-            <p>And I compile with the
-            <code>-V navbar="$(cat navbar.html)"</code> flag. Just like
-            that, we have a working component system (sort of). Putting
-            all of this together, we have a working static site
-            generator. I recommend the following directory structure as
-            well:</p>
-            <pre><code>/ (project root)
-- blog/
-- templates/
-- components/
-- out/
-  - blog/</code></pre>
-            <h2 id="the-build-stage">The Build Stage</h2>
-            <p>Now in order to put this all together, I whipped up a
-            quick python script to build the site automatically, because
-            running <code>pandoc</code> by hand get’s annoying,
-            difficult, and error-prone if one has dozens of posts. I
-            debated if I should have used <code>bash</code>,
-            <code>make</code>, or even <code>fish</code>, but
-            <code>python</code> ultimately won out as it is the simplest
-            for me and allows for the most “programming”, useful because
-            I do end up (sort of) serializing the blog posts.</p>
-            <p>The heart of the script is the function
-            <code>build_page()</code>. This function basically just
-            wraps around a <code>pandoc</code> command to build a page
-            with a template and add components. Here it is:</p>
-            <div class="sourceCode" id="cb7"><pre
-            class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_page(input_page: <span class="bu">str</span>, output_page: <span class="bu">str</span>, template: <span class="bu">str</span>, args: <span class="bu">dict</span>[<span class="bu">str</span>, <span class="bu">str</span>]):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;[INFO] Transforming Page &#39;</span><span class="sc">{</span>input_page<span class="sc">}</span><span class="ss">&#39; into Page &#39;</span><span class="sc">{</span>output_page<span class="sc">}</span><span class="ss">&#39; with Template &#39;</span><span class="sc">{</span>template<span class="sc">}</span><span class="ss">&#39;&quot;</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    command <span class="op">=</span> <span class="ss">f&quot;pandoc &#39;</span><span class="sc">{</span>input_page<span class="sc">}</span><span class="ss">&#39; -o &#39;</span><span class="sc">{</span>output_page<span class="sc">}</span><span class="ss">&#39; --template &#39;</span><span class="sc">{</span>template<span class="sc">}</span><span class="ss">&#39; &quot;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (arg, val) <span class="kw">in</span> args.items():</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        command <span class="op">+=</span> <span class="ss">f&quot;-V </span><span class="sc">{</span>arg<span class="sc">}</span><span class="ss">=</span><span class="ch">\&quot;</span><span class="ss">$(cat </span><span class="sc">{</span>val<span class="sc">}</span><span class="ss">)</span><span class="ch">\&quot;</span><span class="ss"> &quot;</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    os.system(command)</span></code></pre></div>
-            <p>With this handy function, generating the about and index
-            pages becomes very easy. All we have to do is run the
-            <code>build_page()</code> function like this:</p>
-            <div class="sourceCode" id="cb8"><pre
-            class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate Index Page</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>build_page(<span class="st">&quot;index.md&quot;</span>, <span class="st">&quot;out/index.html&quot;</span>, <span class="st">&quot;templates/page.html&quot;</span>, DEFAULT_ARGS)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate About Page</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>build_page(<span class="st">&quot;about.md&quot;</span>, <span class="st">&quot;out/about.html&quot;</span>, <span class="st">&quot;templates/page.html&quot;</span>, DEFAULT_ARGS)</span></code></pre></div>
-            <p>The next thing to do is to build the blog posts and the
-            blog index. For this I decided for some reason to abstract
-            over a blog post with a class. However, in my defense, it
-            was a <code>dataclass</code>.</p>
-            <div class="sourceCode" id="cb9"><pre
-            class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BlogPost():</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    published_date: datetime</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    updated_date: datetime</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    title: <span class="bu">str</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    contents: <span class="bu">str</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    location: <span class="bu">list</span>[<span class="bu">str</span>] </span></code></pre></div>
-            <p>Why so many properties? The main reason was I wanted to
-            be able to sort, list, and make into an RSS feed the blog
-            posts. I additionally wrote the boilerplate necessary for
-            sorting a <code>list[BlogPost]</code>
-            (<code>__eq__()</code>, <code>__ne__()</code>,
-            <code>__gt__()</code>, <code>__lt__()</code>,
-            <code>__ge__()</code>, and <code>__le__()</code>).</p>
-            <p>I wrote a function next for getting all blog posts and
-            building all of them. After a little <code>CSS</code>, it’s
-            all done.</p>
-            <h2 id="putting-it-all-together">Putting it all
-            Together</h2>
-            <div data-box="warning">
-            <p>WARNING:</p>
-            <p>While effort was made to make the script generic, it
-            still contains a lot of hardcoded values. Additionally, it
-            is not well-written or tested so do not expect for it to
-            work. If you don’t want to get down and dirty in the
-            details, don’t use it. There are plenty of SSGs around and I
-            don’t want to rob you of the fun of writing your own.</p>
-            </div>
-            <p>To summarize, I basically created a crappy SSG with
-            <code>python</code> and <code>pandoc</code>. If anyone for
-            any reason wants to see it, the site is contained in two
-            repositories, <a
-            href="https://github.com/benraz123/site">this one</a> for
-            the source and <a
-            href="https://github.com/benraz123/benraz123.github.io">this
-            one</a> for the build.</p>
-            <hr>
-            <details class="comments">
-                <summary>
-                    <h2>Comments (Disqus)</h2>
-                </summary>
-                <div id="disqus_thread"></div>
-            </details>
-            <details class="comments">
-                <summary>
-                    <h2>Comments (Facebook)</h2>
-                </summary>
-                <div class="fb-comments" data-href="https://benraz.dev/blog/website_process.html" data-width="" data-numposts="10">
-                </div>
-            </details>
-            <script>
-                /**
-                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-                /*
-                var disqus_config = function () {
-                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                };
-                */
-                (function () { // DON'T EDIT BELOW THIS LINE
-                    var d = document, s = d.createElement('script');
-                    s.src = 'https://benrazdev.disqus.com/embed.js';
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered
-                    by Disqus.</a></noscript>
-            </details>
+            <h1>Projects</h1>
+            <h2 id="links">Project Links</h2>
+            <p>Here are all of the platforms where my code is hosted:</p>
+            <ul>
+                <li><a href="https://github.com/BenRaz123">Github</a></li>
+                <li><a href="hhttps://crates.io/users/BenRaz123?sort=recent-updates">Crates.io</a></li>
+            </ul>
+            <h2 id="projs">Github Projects</h2>
+            <ul id="gh-projects">
+                <noscript>Please Enable Javascript to see a list of github projects</noscript>
+            </ul>
             <footer>
                 All content is licensed under the MIT license unless otherwise posted. (Ben Raz <span id="year-update">2024</span>)
                 <script>
@@ -1231,8 +1001,148 @@
     	top: 2;
     }
 </style>
-<script>
-    document.querySelectorAll('div.sourceCode').map(a => {console.log(a)})
+<script type="module">
+    import {Octokit} from 'https://esm.sh/@octokit/rest';
+
+    // Create an Octokit instance without authentication
+    const octokit = new Octokit();
+
+    // Example: Fetch public repositories for a user
+    async function fetchRepos(username, page) {
+        try {
+            await delay(1000);
+            const response = await octokit.request('GET /users/{username}/repos', {
+                username: username,
+                per_page: 100,
+                page: page,
+            });
+            console.log(response.data);
+            return response.data;
+        } catch (error) {
+            console.error('Error fetching repositories:', error);
+            return [];
+        }
+    }
+    function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function fetchAllRepos(u) {
+        let page = 1;
+        let resp;
+        let res = [];
+        do {
+            resp = await setTimeout(() => fetchRepos(u, page), 1000);
+            console.log(resp);
+            res.concat(resp);
+            page++;
+            // manual intervention
+            if (page > 10) {break;}
+        } while (resp.length > 0);
+    }
+
+    const createListItem = (repo) => {
+        let li = document.createElement("li");
+
+        let name = document.createElement("a");
+        name.innerHTML = repo.name;
+        name.setAttribute("href", repo.clone_url);
+        li.appendChild(name);
+
+        let moreInfoContainer = document.createElement("div");
+        moreInfoContainer.setAttribute("class", "more-info-container");
+        li.appendChild(moreInfoContainer);
+
+        let lang = document.createElement("span");
+        lang.innerHTML = repo.language ? "Written in " + repo.language + ". " : "";
+        moreInfoContainer.appendChild(lang);
+
+        createMoreElem(repo, moreInfoContainer);
+
+        document.querySelector("#gh-projects").appendChild(li);
+    }
+
+    function createMoreElem(r, e) {
+        const TO_DISPLAY = new Map([
+            ["Number of Forks", r.forks_count],
+            ["Default Branch", r.default_branch],
+            ["Last Modified", new Date(r.pushed_at)],
+            ["Open Issues", r.open_issues_count],
+            ["Is Archived", r.archived],
+            ["Description", r.description || "None given"],
+            ["Created at", new Date(r.created_at)],
+            ["Watching", r.watchers],
+            ["Stars", r.stargazers_count],
+        ]);
+
+        const safeName = r.name.replaceAll(".", "dot");
+
+        let moreLink = document.createElement("a");
+        moreLink.href = "#";
+        moreLink.setAttribute("onclick", "document.querySelector('#" + safeName + "-info').showModal()");
+        moreLink.innerHTML = "(More)";
+        e.appendChild(moreLink);
+
+        let more = document.createElement("dialog");
+        more.setAttribute('id', safeName + "-info");
+        e.appendChild(more);
+
+        let moreContainer = document.createElement("div");
+        moreContainer.classList = "dialog-content";
+        more.appendChild(moreContainer);
+
+        let moreHeader = document.createElement("header");
+        moreHeader.innerHTML = `More on "` + r.name + "\"";
+        moreContainer.appendChild(moreHeader);
+
+        let moreList = document.createElement("dl");
+        moreContainer.appendChild(moreList);
+
+        TO_DISPLAY.forEach((value, key) => {
+            /*let listitem = document.createElement("li");
+            moreList.appendChild(listitem);*/
+
+            let keytext = document.createElement("dt");
+            keytext.innerHTML = key;
+            moreList.appendChild(keytext);
+
+            let valuetext = document.createElement("dd");
+            valuetext.innerHTML = value;
+            moreList.appendChild(valuetext);
+        })
+
+        let buttonContainer = document.createElement("div");
+        buttonContainer.classList = "dialog-buttons";
+        buttonContainer.setAttribute("onclick", "document.querySelector('#" + safeName + "-info').close()");
+        more.appendChild(buttonContainer);
+
+        let form = document.createElement("form");
+        form.setAttribute("method", "dialog");
+        buttonContainer.appendChild(form);
+
+        let button = document.createElement("button");
+        button.innerHTML = "Close";
+        button.setAttribute("onclick", "document.querySelector('#" + safeName + "-info').close()");
+        form.appendChild(button);
+    }
+
+    async function getData() {
+        let from_ls = window.localStorage.getItem("ghrepos");
+        if (from_ls != null) {
+            return JSON.parse(from_ls);
+        }
+
+        let repos = await fetchRepos('BenRaz123', 1);
+        repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        localStorage.setItem('ghrepos', JSON.stringify(repos));
+        return repos;
+    }
+    // Fetch repositories for a specific user
+    async function main() {
+        let repos = await getData();
+        repos.forEach((r) => createListItem(r));
+    }
+
+    main();
 </script>
 
 </html>

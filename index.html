@@ -64,12 +64,15 @@
     } else if (window.innerWidth > 950) {
         if (document.querySelectorAll("body")[0].hasAttribute("blogpost")) {
             window.addEventListener("scroll", () => {
+            	const nav = document.querySelectorAll("nav")[0];
                 const header = document.querySelector("#blogheaders");
                 if (window.scrollY > header.offsetTop + header.offsetHeight) {
                     document.querySelector("#nav-article-title").innerHTML = document.querySelectorAll("h1")[0].innerHTML;
+                    nav.style.borderBottomColor = "var(--accent)";
                 }
                 if (window.scrollY < header.offsetTop + header.offsetHeight) {
                     document.querySelector("#nav-article-title").innerHTML = ""
+                    nav.style.borderBottomColor = "";
                 }
             })
         }
@@ -266,7 +269,8 @@ footer {
 		padding-right: 10px;
 	}
 
-	ul.blogposts {
+	ul.blogposts,
+	#gh-projects {
 		grid-template-columns: 1fr;
 	}
 
@@ -288,7 +292,8 @@ footer {
 		align-items: center;
 		justify-content: center;
 		gap: 7px;
-		& > span {
+
+		&>span {
 			transform: translateY(-2px);
 		}
 	}
@@ -297,13 +302,15 @@ footer {
 @media screen and (min-width: 500px) {
 
 	ul.blogposts,
+	#gh-projects,
 	pre:not([class]),
 	div.sourceCode {
 		margin-left: 15%;
 		margin-right: 15%;
 	}
 
-	ul.blogposts {
+	ul.blogposts,
+	#gh-projects {
 		grid-template-columns: 1fr 1fr;
 	}
 
@@ -313,26 +320,47 @@ footer {
 	}
 }
 
-@media screen and (min-width: 900) {
-	#nav-article-title {
+@media screen and (min-width: 900px) {
+	header#nav-article-title {
+		/*
 		position: absolute;
 		left: 50%;
-		transform: translateX(-50%);
-		width: 100%;
+		margin-left: -50%;
+		width: 100%;*/
+		text-align: center;
+	}
+
+	nav {
+		display:grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		&>*:first-child {
+			justify-self: start;
+		}
+		&>*:last-child {
+			justify-self: end;
+		}
 	}
 }
 
-@media screen and (max-width: 900) {
+@media screen and (max-width: 900px) {
 	#nav-article-title {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
 	}
+
+	nav {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
 }
 
 @media screen and (min-width: 1000px) {
-	ul.blogposts {
+
+	ul.blogposts,
+	#gh-projects {
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 }
@@ -353,7 +381,8 @@ nav * {
 		align-items: center;
 	}
 
-	ul.blogposts {
+	ul.blogposts,
+	#gh-projects {
 		grid-template-columns: 1fr;
 	}
 }
@@ -361,19 +390,23 @@ nav * {
 @media screen and (min-width: 500px) {
 
 	ul.blogposts,
+	#gh-projects,
 	pre:not([class]),
 	div.sourceCode {
 		margin-left: 15%;
 		margin-right: 15%;
 	}
 
-	ul.blogposts {
+	ul.blogposts,
+	#gh-projects {
 		grid-template-columns: 1fr 1fr;
 	}
 }
 
 @media screen and (min-width: 1000px) {
-	ul.blogposts {
+
+	ul.blogposts,
+	#gh-projects {
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 }
@@ -416,8 +449,7 @@ nav {
 	padding: 1rem 2rem;
 	margin: 0;
 	margin-bottom: 1rem;
-	display: flex;
-	justify-content: space-between;
+
 	align-items: center;
 	border-bottom: 2px solid var(--subtlegray);
 	/*filter: drop-shadow(0px 5px 10px #050505);*/
@@ -471,7 +503,8 @@ span.timestamp {
  * Blog Posts List
  */
 
-ul.blogposts {
+ul.blogposts,
+#gh-projects {
 	display: grid;
 	padding: 0;
 	gap: 0.5rem;
@@ -600,7 +633,8 @@ main>hr {
 
 dialog {
 	border-radius: 1rem;
-	width: 15rem;
+	min-width: 15rem;
+	max-width: 20rem;
 	border-color: var(--dialog-border-color);
 	filter: drop-shadow(0 0 10px var(--dialog-shadow));
 	border-width: 1px;
@@ -631,6 +665,19 @@ dialog {
 			justify-content: center;
 		}
 
+		&>dl {
+			&>dt {
+				font-weight: 700;
+			}
+			&>dt:not(:first-child) {
+				margin-top: 1rem;
+				border-top: 1px solid var(--fg);
+			}
+			&>dd {
+				margin-left: 0;
+			}
+		}
+
 		&>ul {
 			list-style-type: none;
 			border: none;
@@ -638,7 +685,8 @@ dialog {
 			display: flex;
 			flex-direction: column;
 
-			& a {
+			& a,
+			#gh-projects li {
 				padding: 1rem;
 				display: flex;
 				flex-direction: row;
@@ -925,7 +973,7 @@ div#disqus_thread {
 
 [wip]::before {
 	content: "WORK IN PROGRESS";
-	background: repeating-linear-gradient(-55deg,
+	background: repeating-linear-gradient(-45deg,
 			#000000, #000000 15px,
 			#e2d529 15px, #e2d529 30px);
 	display: block;
