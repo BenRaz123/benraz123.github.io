@@ -19,9 +19,11 @@
         </a>
         <header id="nav-article-title"></header>
         <div class="links-wrapper">
-            <a href="/about.html">about</a><span class="delim"> | </span><a href="/blog">blog</a><span class="delim"> |
-            </span><a href="https://github.com/benraz123">github</a><span class="delim"> | </span><a
-                href="https://crates.io/users/BenRaz123?sort=recent-updates">crates.io</a>
+            <a href="/social.html">social/contact</a>
+            <span class="delim"> | </span>
+            <a href="/projects.html">projects</a>
+            <span class="delim"> | </span>
+            <a href="/blog">blog</a>
         </div>
     </nav>
 
@@ -359,8 +361,8 @@
     @media (prefers-color-scheme: dark) {
     	:root {
     		--fg: white;
-    		--bg: #161616;
-    		--subtlegray: #262626;
+    		--bg: #121218;
+    		--subtlegray: #46464633;
     		/*--accent: #bb99ff;*/
     		;
     		--accent: #5f9;
@@ -437,6 +439,80 @@
     h1 {
     	font-size: 2.5rem;
     	font-variation-settings: 'wght' 900;
+    }
+
+    /*
+     * Featured projects
+     */
+
+    .project {
+    	background-image: linear-gradient(#0000, #0004), linear-gradient(var(--accent), var(--accent));
+    	padding-top: 1.5rem;
+    	padding-left: 2.5rem;
+    	padding-right: 2.5rem;
+    	padding-bottom: 1.5rem;
+    	border-radius: 1rem;
+
+    	&:not(:first-child) {
+    		margin-top: 1rem;
+    	}
+
+    	& * {
+    		color: var(--bg);
+    		background-color: #0000;
+    	}
+
+    	& ::selection {
+    		background-color: var(--bg);
+    		color: var(--accent);
+    	}
+
+    	& img {
+    		height: 10rem;
+    		width: auto;
+    		user-select: none;
+    	}
+    }
+
+    @media screen and (min-width: 500px) {
+    	.project {
+    		margin-left: 15%;
+    		margin-right: 15%;
+    	}
+    }
+
+    @media screen and (max-width: 800px) {
+    	.project {
+    		display: flex;
+    		flex-direction: column-reverse;
+    		align-items: center;
+    		padding-bottom: 2.5rem;
+    		& img {
+    			height: 7.5rem;
+    			width: auto;
+    		}
+    	}
+    }
+
+    @media screen and (min-width: 800px) {
+    	.project {
+    		display: flex;
+    		flex-direction: row;
+    		gap: 2rem;
+    		padding-right: 1.5rem;
+    		& h2 {
+    			padding-top: 0;
+    			margin-top: 0;
+    		}
+    		& a {
+    			width: fit-content;
+    		}
+    		&>div:first-child {
+    			display: flex;
+    			flex-direction: column;
+    			justify-content: center;
+    		}
+    	}
     }
 
     /*
@@ -569,11 +645,13 @@
     	}
 
     	nav {
-    		display:grid;
+    		display: grid;
     		grid-template-columns: 1fr 1fr 1fr;
+
     		&>*:first-child {
     			justify-self: start;
     		}
+
     		&>*:last-child {
     			justify-self: end;
     		}
@@ -763,6 +841,10 @@
     			border: 2px solid var(--accent);
     		}
 
+    		&>div:has(a:active) {
+    			border: none;
+    		}
+
     		&>a {
     			font-weight: 700;
     		}
@@ -869,6 +951,24 @@
     	justify-content: space-between;
     }
 
+    /*
+     * https://stackoverflow.com/questions/54747393/modal-window-is-causing-the-parent-page-body-to-scroll-to-the-top
+     */
+
+    .modal-open {
+    	overflow: initial;
+    }
+
+    body.modal-open {
+    	overflow: hidden;
+    	position: fixed;
+    	width: 100%;
+    }
+
+    body:has(dialog:target) {
+    	overflow: hidden;
+    }
+
     dialog {
     	border-radius: 1rem;
     	min-width: 15rem;
@@ -904,16 +1004,49 @@
     		}
 
     		&>dl {
-    			&>dt {
-    				font-weight: 700;
+    			padding: 0;
+
+    			&>.details-container {
+    				background-color: var(--dialog-list-initial-bg);
+    				padding: 1rem;
+
+    				& * {
+    					background-color: #0000;
+    				}
+
+    				&>details[open]>summary {
+    					font-weight: 700;
+    				}
+
+    				&>details {
+    					margin: 0;
+
+    					&>summary {
+    						transition: color 0.2s;
+    						padding-top: 0;
+    						margin-top: 0;
+    					}
+
+    					&>summary:hover {
+    						color: var(--accent);
+    					}
+    				}
     			}
-    			&>dt:not(:first-child) {
-    				margin-top: 1rem;
-    				border-top: 1px solid var(--fg);
+
+    			&>.details-container:not(:first-child) {
+    				border-top: 1px solid var(--dialog-list-internal-border);
     			}
-    			&>dd {
-    				margin-left: 0;
+
+    			&>.details-container:first-child {
+    				border-top-left-radius: 0.75rem;
+    				border-top-right-radius: 0.75rem;
     			}
+
+    			&>.details-container:last-child {
+    				border-bottom-left-radius: 0.75rem;
+    				border-bottom-right-radius: 0.75rem;
+    			}
+
     		}
 
     		&>ul {
