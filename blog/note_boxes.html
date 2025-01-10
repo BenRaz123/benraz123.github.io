@@ -1095,11 +1095,12 @@
     	width: 100%;
     }
 
-    body:has(dialog:target) {
+    body:has(dialog[open]) {
     	overflow: hidden;
     }
 
     dialog {
+        position: relative;
     	border-radius: 1rem;
     	min-width: 15rem;
     	max-width: 20rem;
