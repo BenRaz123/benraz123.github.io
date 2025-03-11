@@ -13,6 +13,10 @@ Ukraine - Ben Raz Blog</title>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0"></script>
+    <!-- 
+    Dont see youself through the eyes of someone else
+    - Me 2025
+    -->
     <nav>
         <a id="self-link" href="/">
             <img src="/assets/pfp.png" />
@@ -86,13 +90,14 @@ Ukraine - Ben Raz Blog</title>
     </script>
     <div class="main-container">
         <main>
-            <div class="nav-links-container-container">
-                <div class="nav-links-container">
-                    <a href="/">&lt;&lt; home</a><noscript class="hide">
-                    </noscript>
-                    <a href="/blog">&lt; blog</a>
-                </div>
-                <!--
+            <header class="article-header">
+                <div class="nav-links-container-container">
+                    <div class="nav-links-container">
+                        <a href="/">&lt;&lt; home</a><noscript class="hide">
+                        </noscript>
+                        <a href="/blog">&lt; blog</a>
+                    </div>
+                    <!--
                 <div class="share-links-container">
                     <select id="share-links" onchange="location=this.value">
                         <option value="#" hidden disabled selected>Share &gt;&gt;</option>
@@ -107,30 +112,48 @@ Ukraine - Ben Raz Blog</title>
                     </select>
                 </div>
                 -->
-                <a onclick="document.querySelector('#share').showModal()" href="#">share &gt;&gt;</a>
-                <dialog id="share">
-                    <div class="dialog-content">
-                        <header>Select a Platform</header>
-                        <ul>
-                            <a target="_blank" onclick="document.querySelector('#share').close()" href="https://x.com/intent/post?url=https://benraz.dev/blog/trump_ukraine_nato.html"><li>X (Twitter)</li></a>
-                            <a target="_blank" onclick="document.querySelector('#share').close()" href="https://bsky.app/intent/compose?text=https://benraz.dev/blog/trump_ukraine_nato.html"><li>Bluesky</li></a>
-                            <a target="_blank" onclick="document.querySelector('#share').close()" href="https://mastodonshare.com/?url=https://benraz.dev/blog/trump_ukraine_nato.html"><li>Mastodon</li></a>
-                            <a target="_blank" onclick="document.querySelector('#share').close()" href="https://www.facebook.com/sharer/sharer.php?u=https://benraz.dev/blog/trump_ukraine_nato.html"><li>FaceBook</li></a>
-                            <a target="_blank" onclick="document.querySelector('#share').close()" href="https://news.ycombinator.com/submitlink?u=https://benraz.dev/blog/trump_ukraine_nato.html"><li>Hacker News</li></a>
-                        </ul>
-                    </div>
-                    <div class="dialog-buttons" onclick="document.querySelector('#share').close();">
-                        <form method="dialog">
-                            <button type="submit">Close</button>
-                        </form>
-                    </div>
-                </dialog>
-            </div>
-	    <hgroup id="blogheaders">
-	    <h1>Predicting Trump’s Policy on NATO &amp; Ukraine</h1>
-            <span>Published 2024-11-30 12:04:00 -08</span><br>
-                        <span>Updated 2024-12-26 12:04:00 -05</span>
-            	    </hgroup>
+                    <a onclick="document.querySelector('#share').showModal()" href="#">share &gt;&gt;</a>
+                    <dialog id="share">
+                        <div class="dialog-content">
+                            <header>Select a Platform</header>
+                            <ul>
+                                <a target="_blank" onclick="document.querySelector('#share').close()"
+                                    href="https://x.com/intent/post?url=https://benraz.dev/blog/trump_ukraine_nato.html">
+                                    <li>X (Twitter)</li>
+                                </a>
+                                <a target="_blank" onclick="document.querySelector('#share').close()"
+                                    href="https://bsky.app/intent/compose?text=https://benraz.dev/blog/trump_ukraine_nato.html">
+                                    <li>Bluesky</li>
+                                </a>
+                                <a target="_blank" onclick="document.querySelector('#share').close()"
+                                    href="https://mastodonshare.com/?url=https://benraz.dev/blog/trump_ukraine_nato.html">
+                                    <li>Mastodon</li>
+                                </a>
+                                <a target="_blank" onclick="document.querySelector('#share').close()"
+                                    href="https://www.facebook.com/sharer/sharer.php?u=https://benraz.dev/blog/trump_ukraine_nato.html">
+                                    <li>FaceBook</li>
+                                </a>
+                                <a target="_blank" onclick="document.querySelector('#share').close()"
+                                    href="https://news.ycombinator.com/submitlink?u=https://benraz.dev/blog/trump_ukraine_nato.html">
+                                    <li>Hacker News</li>
+                                </a>
+                            </ul>
+                        </div>
+                        <div class="dialog-buttons" onclick="document.querySelector('#share').close();">
+                            <form method="dialog">
+                                <button type="submit">Close</button>
+                            </form>
+                        </div>
+                    </dialog>
+                </div>
+                <hgroup id="blogheaders">
+                    <h1>Predicting Trump’s Policy on NATO &amp;
+Ukraine</h1>
+                    <span>Published 2024-11-30 12:04:00 -08</span><br>
+                                        <span>Updated 2024-12-26
+12:04:00 -05</span>
+                                    </hgroup>
+            </header>
             <hr>
             <div data-box="disclaimer">
             <p>DISCLAIMER:</p>
@@ -637,6 +660,8 @@ Ukraine - Ben Raz Blog</title>
     		margin-left: 15%;
     		margin-right: 15%;
     	}
+
+
     }
 
     @media screen and (max-width: 800px) {
@@ -645,6 +670,7 @@ Ukraine - Ben Raz Blog</title>
     		flex-direction: column-reverse;
     		align-items: center;
     		padding-bottom: 2.5rem;
+
     		& img {
     			height: 7.5rem;
     			width: auto;
@@ -658,13 +684,16 @@ Ukraine - Ben Raz Blog</title>
     		flex-direction: row;
     		gap: 2rem;
     		padding-right: 1.5rem;
+
     		& h2 {
     			padding-top: 0;
     			margin-top: 0;
     		}
+
     		& a {
     			width: fit-content;
     		}
+
     		&>div:first-child {
     			display: flex;
     			flex-direction: column;
@@ -697,7 +726,7 @@ Ukraine - Ben Raz Blog</title>
      */
 
     body {
-    	margin: 0
+    	margin: 0;
     }
 
     .main-container {
@@ -713,11 +742,6 @@ Ukraine - Ben Raz Blog</title>
     	}
     }
 
-
-
-    header {
-    	font-weight: 700;
-    }
 
     main>*,
     footer {
@@ -800,6 +824,14 @@ Ukraine - Ben Raz Blog</title>
     		margin-left: -50%;
     		width: 100%;*/
     		text-align: center;
+    	}
+
+    	header.article-header {
+    		margin-left: 9%;
+    		margin-right: 9%;
+    		margin-bottom: 4rem;
+    		padding: 2rem;
+    		border-left: 2px solid var(--subtlegray);
     	}
 
     	nav {
@@ -1128,7 +1160,7 @@ Ukraine - Ben Raz Blog</title>
     }
 
     dialog {
-        position: relative;
+    	position: relative;
     	border-radius: 1rem;
     	min-width: 15rem;
     	max-width: 20rem;

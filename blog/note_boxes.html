@@ -12,6 +12,10 @@
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0"></script>
+    <!-- 
+    Dont see youself through the eyes of someone else
+    - Me 2025
+    -->
     <nav>
         <a id="self-link" href="/">
             <img src="/assets/pfp.png" />
@@ -85,13 +89,14 @@
     </script>
     <div class="main-container">
         <main>
-            <div class="nav-links-container-container">
-                <div class="nav-links-container">
-                    <a href="/">&lt;&lt; home</a><noscript class="hide">
-                    </noscript>
-                    <a href="/blog">&lt; blog</a>
-                </div>
-                <!--
+            <header class="article-header">
+                <div class="nav-links-container-container">
+                    <div class="nav-links-container">
+                        <a href="/">&lt;&lt; home</a><noscript class="hide">
+                        </noscript>
+                        <a href="/blog">&lt; blog</a>
+                    </div>
+                    <!--
                 <div class="share-links-container">
                     <select id="share-links" onchange="location=this.value">
                         <option value="#" hidden disabled selected>Share &gt;&gt;</option>
@@ -106,29 +111,45 @@
                     </select>
                 </div>
                 -->
-                <a onclick="document.querySelector('#share').showModal()" href="#">share &gt;&gt;</a>
-                <dialog id="share">
-                    <div class="dialog-content">
-                        <header>Select a Platform</header>
-                        <ul>
-                            <a target="_blank" onclick="document.querySelector('#share').close()" href="https://x.com/intent/post?url=https://benraz.dev/blog/note_boxes.html"><li>X (Twitter)</li></a>
-                            <a target="_blank" onclick="document.querySelector('#share').close()" href="https://bsky.app/intent/compose?text=https://benraz.dev/blog/note_boxes.html"><li>Bluesky</li></a>
-                            <a target="_blank" onclick="document.querySelector('#share').close()" href="https://mastodonshare.com/?url=https://benraz.dev/blog/note_boxes.html"><li>Mastodon</li></a>
-                            <a target="_blank" onclick="document.querySelector('#share').close()" href="https://www.facebook.com/sharer/sharer.php?u=https://benraz.dev/blog/note_boxes.html"><li>FaceBook</li></a>
-                            <a target="_blank" onclick="document.querySelector('#share').close()" href="https://news.ycombinator.com/submitlink?u=https://benraz.dev/blog/note_boxes.html"><li>Hacker News</li></a>
-                        </ul>
-                    </div>
-                    <div class="dialog-buttons" onclick="document.querySelector('#share').close();">
-                        <form method="dialog">
-                            <button type="submit">Close</button>
-                        </form>
-                    </div>
-                </dialog>
-            </div>
-	    <hgroup id="blogheaders">
-	    <h1>Note Boxes!</h1>
-            <span>Published 2024-12-24 09:35:00 -05</span><br>
-            	    </hgroup>
+                    <a onclick="document.querySelector('#share').showModal()" href="#">share &gt;&gt;</a>
+                    <dialog id="share">
+                        <div class="dialog-content">
+                            <header>Select a Platform</header>
+                            <ul>
+                                <a target="_blank" onclick="document.querySelector('#share').close()"
+                                    href="https://x.com/intent/post?url=https://benraz.dev/blog/note_boxes.html">
+                                    <li>X (Twitter)</li>
+                                </a>
+                                <a target="_blank" onclick="document.querySelector('#share').close()"
+                                    href="https://bsky.app/intent/compose?text=https://benraz.dev/blog/note_boxes.html">
+                                    <li>Bluesky</li>
+                                </a>
+                                <a target="_blank" onclick="document.querySelector('#share').close()"
+                                    href="https://mastodonshare.com/?url=https://benraz.dev/blog/note_boxes.html">
+                                    <li>Mastodon</li>
+                                </a>
+                                <a target="_blank" onclick="document.querySelector('#share').close()"
+                                    href="https://www.facebook.com/sharer/sharer.php?u=https://benraz.dev/blog/note_boxes.html">
+                                    <li>FaceBook</li>
+                                </a>
+                                <a target="_blank" onclick="document.querySelector('#share').close()"
+                                    href="https://news.ycombinator.com/submitlink?u=https://benraz.dev/blog/note_boxes.html">
+                                    <li>Hacker News</li>
+                                </a>
+                            </ul>
+                        </div>
+                        <div class="dialog-buttons" onclick="document.querySelector('#share').close();">
+                            <form method="dialog">
+                                <button type="submit">Close</button>
+                            </form>
+                        </div>
+                    </dialog>
+                </div>
+                <hgroup id="blogheaders">
+                    <h1>Note Boxes!</h1>
+                    <span>Published 2024-12-24 09:35:00 -05</span><br>
+                                    </hgroup>
+            </header>
             <hr>
             <div data-box="note">
             <p>NOTE:</p>
@@ -609,6 +630,8 @@
     		margin-left: 15%;
     		margin-right: 15%;
     	}
+
+
     }
 
     @media screen and (max-width: 800px) {
@@ -617,6 +640,7 @@
     		flex-direction: column-reverse;
     		align-items: center;
     		padding-bottom: 2.5rem;
+
     		& img {
     			height: 7.5rem;
     			width: auto;
@@ -630,13 +654,16 @@
     		flex-direction: row;
     		gap: 2rem;
     		padding-right: 1.5rem;
+
     		& h2 {
     			padding-top: 0;
     			margin-top: 0;
     		}
+
     		& a {
     			width: fit-content;
     		}
+
     		&>div:first-child {
     			display: flex;
     			flex-direction: column;
@@ -669,7 +696,7 @@
      */
 
     body {
-    	margin: 0
+    	margin: 0;
     }
 
     .main-container {
@@ -685,11 +712,6 @@
     	}
     }
 
-
-
-    header {
-    	font-weight: 700;
-    }
 
     main>*,
     footer {
@@ -772,6 +794,14 @@
     		margin-left: -50%;
     		width: 100%;*/
     		text-align: center;
+    	}
+
+    	header.article-header {
+    		margin-left: 9%;
+    		margin-right: 9%;
+    		margin-bottom: 4rem;
+    		padding: 2rem;
+    		border-left: 2px solid var(--subtlegray);
     	}
 
     	nav {
@@ -1100,7 +1130,7 @@
     }
 
     dialog {
-        position: relative;
+    	position: relative;
     	border-radius: 1rem;
     	min-width: 15rem;
     	max-width: 20rem;
