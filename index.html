@@ -103,7 +103,9 @@ href="https://crates.io/users/BenRaz123">crates.io</a>.</p>
  * General Settings
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
 
 @font-face {
 	font-family: "cantvf";
@@ -113,7 +115,7 @@ href="https://crates.io/users/BenRaz123">crates.io</a>.</p>
 :root {
 	--sans: "cantvf", "system-ui", "Verdana", "Tahoma", sans-serif;
 	--title: var(sans);
-	--mono: "Ubuntu Mono", "DejaVu Sans Mono", monospace;
+	--mono: "Inconsolata", "DejaVu Sans Mono", monospace;
 	--red: darkred;
 	--green: darkgreen;
 	--blue: blue;
@@ -121,7 +123,7 @@ href="https://crates.io/users/BenRaz123">crates.io</a>.</p>
 	--orange: darkorange;
 	--yellow: darkgoldenrod;
 	--pink: fuchsia;
-	--code-block-bg: #0002;
+	--code-block-bg: #1012;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -146,6 +148,7 @@ href="https://crates.io/users/BenRaz123">crates.io</a>.</p>
 		--dialog-internal-border-color: #fff2;
 		--dialog-buttons-background-image: radial-gradient(ellipse at bottom center, #0000, #ffffff0a);
 		--nav-bg: #16161650;
+		--code-block-bg: #ccffcc19;
 	}
 }
 
@@ -416,7 +419,7 @@ footer {
 		margin-right: 9%;
 		margin-bottom: 4rem;
 		padding: 2rem;
-		border-left: 2px solid var(--subtlegray);
+		/*border-left: 2px solid var(--subtlegray);*/
 	}
 
 	nav {
@@ -931,6 +934,20 @@ pre>code>span:first-child {
 	margin-left: 0em
 }
 
+pre>code span.kw {
+	color: var(--accent);
+	font-weight: bold;
+}
+
+pre>code span.co {
+	font-style: italic
+}
+
+pre > code span.cf {
+	color: var(--accent);
+}
+
+/*
 span.kw {
 	color: var(--red);
 	font-weight: bold
@@ -992,6 +1009,7 @@ span.sc {
 span.ch {
 	color: var(--magenta)
 }
+*/
 
 /*
  * Styles for comments 
